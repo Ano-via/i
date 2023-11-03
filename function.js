@@ -377,13 +377,13 @@ function showPopup(temp1) {
                 result += `&utm_medium=${utm_medium}`;
               }
               if (utm_campaign) {
-                result += `&utm_campaign${utm_campaign}`;
+                result += `&utm_campaign=${utm_campaign}`;
               }
               if (utm_ad) {
                 result += `&utm_ad=${utm_ad}`;
               }
               if (utm_term) {
-                result += `&utm_term${utm_term}`;
+                result += `&utm_term=${utm_term}`;
               }
               if (utm_content) {
                 result += `&utm_content=${utm_content}`;
