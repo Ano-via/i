@@ -310,6 +310,8 @@ document.getElementById('utm_campaign').value = cookiesObject["utm_campaign"];
 document.getElementById('utm_ad').value = cookiesObject["utm_ad"];
 document.getElementById('utm_term').value = cookiesObject["utm_term"];
 document.getElementById('utm_content').value = cookiesObject["utm_content"];
+var websiteurl = cookiesObject["websiteurl"];
+console.log(websiteurl);
 
 function showPopup(temp1) {
 	document.getElementById("popup").style.display = "block";
@@ -445,6 +447,7 @@ function updatetmlresult() {
 	document.cookie = "utm_ad=" + utm_ad + "; path=/";
 	document.cookie = "utm_term=" + utm_term + "; path=/";
 	document.cookie = "utm_content=" + utm_content + "; path=/";
+	console.log("Cookie saved");
 }
 
 setInterval("updatetmlresult()", 1000);
