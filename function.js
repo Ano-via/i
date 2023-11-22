@@ -297,7 +297,7 @@ function copyTextToClipboard(text) {
 function copyAndRedirect() {
   const code = "554e0e8654804bedad765a63330a1e75";
   copyTextToClipboard(code);
-
+  const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popup");
   const popupText = document.getElementById("popupText");
   overlay.style.display = "block";
