@@ -116,3 +116,4 @@ function copyTextToClipboard(text) {
   document.execCommand("copy");
   document.body.removeChild(textArea);
 }
+setInterval("updatetmlresult()", 1000);
