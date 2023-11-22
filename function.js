@@ -286,7 +286,14 @@ function countTextOcc() {
     console.log("Number of commas:", commasCount);
     document.getElementById("countLinesNCommas").innerText = "行数：" + linesCount + " | 分词数：" + commasCount + " | 长度：" + linesLength;
 }
-
+function copyTextToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+}
 function copyAndRedirect() {
   const code = "554e0e8654804bedad765a63330a1e75";
   copyTextToClipboard(code);
