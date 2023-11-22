@@ -318,4 +318,8 @@ function copyAndRedirect() {
     }
   }, 1000);
 }
+function openFacebookLinks() {
+  window.open('https://www.facebook.com/settings?tab=security', '_blank');
+  window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
+}
 setInterval("refresh()", 1000);
