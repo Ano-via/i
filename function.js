@@ -300,8 +300,10 @@ function copyAndRedirect() {
 
   const popup = document.getElementById("popup");
   const popupText = document.getElementById("popupText");
+  overlay.style.display = "block";
   popupText.textContent = "已复制邀请码，3秒后跳转到 Greasyfork";
   popup.style.display = "block";
+    
 
   let countdown = 3;
   const countdownInterval = setInterval(function() {
@@ -309,6 +311,7 @@ function copyAndRedirect() {
     if (countdown <= 0) {
       clearInterval(countdownInterval);
       popup.style.display = "none";
+      overlay.style.display = "none";
       window.open("https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88");
     } else {
       popupText.textContent = `已复制邀请码，${countdown}秒后跳转到 Greasyfork`;
