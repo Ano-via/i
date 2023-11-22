@@ -396,33 +396,35 @@ function updatetmlresult() {
     document.getElementById('utmresult').value = result;
 
 }
-const copyButton = document.getElementById('copyButton');
-  const overlay = document.getElementById('overlay');
-  const messageElement = document.getElementById('message');
+function copyTextToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+}
 
-  function CopyRegCode() {
-    const textToCopy = '554e0e8654804bedad765a63330a1e75';
-    navigator.clipboard.writeText(textToCopy)
-      .then(function() {
-        countdownAndRedirect(3); // 开始倒计时
-      })
-      .catch(function(err) {
-        console.error('复制失败: ', err);
-      });
-  }
+function copyAndRedirect() {
+  const code = "554e0e8654804bedad765a63330a1e75";
+  copyTextToClipboard(code);
 
-  function countdownAndRedirect(seconds) {
-    overlay.style.display = 'block';
-    messageElement.textContent = `已复制邀请码，${seconds}秒后跳转到Greasyfork`;
+  const popup = document.getElementById("popup");
+  const popupText = document.getElementById("popupText");
+  popupText.textContent = "已复制邀请码，3秒后跳转到 Greasyfork";
+  popup.style.display = "block";
 
-    if (seconds > 0) {
-      setTimeout(function() {
-        countdownAndRedirect(seconds - 1);
-      }, 1000);
+  let countdown = 3;
+  const countdownInterval = setInterval(function() {
+    countdown -= 1;
+    if (countdown <= 0) {
+      clearInterval(countdownInterval);
+      popup.style.display = "none";
+      window.open("https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88");
     } else {
-      overlay.style.display = 'none';
-      window.location.href = 'https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88';
+      popupText.textContent = `已复制邀请码，${countdown}秒后跳转到 Greasyfork`;
     }
-  }
+  }, 1000);
+}
 setInterval("updatetmlresult()", 1000);
 setInterval("refresh()", 1000);
