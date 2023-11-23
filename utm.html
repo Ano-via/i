@@ -15,16 +15,32 @@
     <div class="content">
         <h2>UTM Builder</h2>
         <div>
-        
-      <span style="margin-top:20px; font-size:24px">网　址：</span><input type="text" placeholder="URL" id="websiteurl" style="width:435px"><br>
-      <span style="margin-top:20px; font-size:24px">I　　D：</span><input type="text" placeholder="utm_id" style="width:380px" id="utm_id"><button class="btn4 button" onclick="showPopup('utm_id')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">来　源：</span><input type="text" placeholder="utm_source" style="width:380px" id="utm_source"><button class="btn4 button" onclick="showPopup('utm_source')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">媒　介：</span><input type="text" placeholder="utm_medium" style="width:380px" id="utm_medium"><button class="btn4 button" onclick="showPopup('utm_medium')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">系　列：</span><input type="text" placeholder="utm_campaign" style="width:380px" id="utm_campaign"><button class="btn4 button" onclick="showPopup('utm_campaign')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">广告组：</span><input type="text" placeholder="utm_adset" style="width:380px" id="utm_adset"><button class="btn4 button" onclick="showPopup('utm_adset')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">广　告：</span><input type="text" placeholder="utm_ad" style="width:380px" id="utm_ad"><button class="btn4 button" onclick="showPopup('utm_ad')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">关键字：</span><input type="text" placeholder="utm_term" style="width:380px" id="utm_term"><button class="btn4 button" onclick="showPopup('utm_term')">+</button><br>
-        <span style="margin-top:20px; font-size:24px">内　容：</span><input type="text" placeholder="utm_content" style="width:380px" id="utm_content"><button class="btn4 button" onclick="showPopup('utm_content')">+</button></div>
+
+            <span style="margin-top:20px; font-size:24px">网　址：</span><input type="text" placeholder="URL"
+                id="websiteurl" style="width:435px"><br>
+            <span style="margin-top:20px; font-size:24px">I　　D：</span><input type="text" placeholder="utm_id"
+                style="width:380px" id="utm_id"><button class="btn4 button" onclick="showPopup('utm_id')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">来　源：</span><input type="text" placeholder="utm_source"
+                style="width:380px" id="utm_source"><button class="btn4 button"
+                onclick="showPopup('utm_source')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">媒　介：</span><input type="text" placeholder="utm_medium"
+                style="width:380px" id="utm_medium"><button class="btn4 button"
+                onclick="showPopup('utm_medium')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">系　列：</span><input type="text" placeholder="utm_campaign"
+                style="width:380px" id="utm_campaign"><button class="btn4 button"
+                onclick="showPopup('utm_campaign')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">广告组：</span><input type="text" placeholder="utm_adset"
+                style="width:380px" id="utm_adset"><button class="btn4 button"
+                onclick="showPopup('utm_adset')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">广　告：</span><input type="text" placeholder="utm_ad"
+                style="width:380px" id="utm_ad"><button class="btn4 button" onclick="showPopup('utm_ad')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">关键字：</span><input type="text" placeholder="utm_term"
+                style="width:380px" id="utm_term"><button class="btn4 button"
+                onclick="showPopup('utm_term')">+</button><br>
+            <span style="margin-top:20px; font-size:24px">内　容：</span><input type="text" placeholder="utm_content"
+                style="width:380px" id="utm_content"><button class="btn4 button"
+                onclick="showPopup('utm_content')">+</button>
+        </div>
         <textarea placeholder="UTM结果" id="utmresult" rows="5"></textarea>
         <input id="temp1" style="display:none">
         <div class="popup" id="popup">
@@ -32,7 +48,7 @@
                 <h3>Facebook / Meta</h3>
                 <button class="button2" onclick="insertField('{{campaign_id}}')">campaign_id</button>
                 <button class="button2" onclick="insertField('{{adset_id}}')">adset_id</button>
-                <button class="button2" onclick="insertField('{{ad_id}}">ad_id</button>
+                <button class="button2" onclick="insertField('{{ad_id}}')">ad_id</button>
                 <h3>TikTok</h3>
                 <button class="button2" onclick="insertField('__CAMPAIGN_ID__ ')">campaign_id</button>
                 <button class="button2" onclick="insertField('__AID__ ')">adset_id</button>
@@ -58,7 +74,9 @@
 
     <div id="footer">
         <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv" style="display: inline;">总访问量：<span id="busuanzi_value_site_pv"></span>次。</span>
-    </div></body>
+        <span id="busuanzi_container_site_pv" style="display: inline;">总访问量：<span
+                id="busuanzi_value_site_pv"></span>次。</span>
+    </div>
+</body>
 
 </html>
