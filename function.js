@@ -122,7 +122,8 @@ function dividetext() {
     ptext = ptext.replace(/\t/g, "\n");
     ptext = ptext.replace(/\u0020/g, "");
     document.getElementById("dividedtext").value = ptext;
-    document.getElementById("metalink").setAttribute("href", "https://mbasic.facebook.com?email=" + ptext.substring(0, ptext.indexOf("\n")) + "&pass=" + ptext.substring(ptext.indexOf("\n") + 1, ptext.indexOf("\n", ptext.indexOf("\n") + 1))) var twofact = /[A-Z0-9]{32}/g.exec(ptext);
+    document.getElementById("metalink").setAttribute("href", "https://mbasic.facebook.com?email=" + ptext.substring(0, ptext.indexOf("\n")) + "&pass=" + ptext.substring(ptext.indexOf("\n") + 1, ptext.indexOf("\n", ptext.indexOf("\n") + 1)))
+    var twofact = /[A-Z0-9]{32}/g.exec(ptext);
     document.getElementById("twofarequest").value = twofact;
     var timestamp1 = Date.parse(new Date());
     var tc = Math.floor(timestamp1 / 30000);
@@ -204,12 +205,11 @@ function delparentheses() {
     var obj = document.getElementById('delparentheses');
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
-    setTimeout(function() {
+    setTimeout(function () {
         obj.innerHTML = "去括号 + 复制";
         obj.style.backgroundColor = "#f2f2f2";
         obj.style.color = "#000000";
-    },
-    3000);
+    }, 3000);
 }
 
 function space2enter() {
@@ -225,12 +225,11 @@ function space2enter() {
     var obj = document.getElementById('space2enter');
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
-    setTimeout(function() {
+    setTimeout(function () {
         obj.innerHTML = "空格 → 换行";
         obj.style.backgroundColor = "#f2f2f2";
         obj.style.color = "#000000";
-    },
-    3000);
+    }, 3000);
 }
 
 function calculateUPCChecksum(digits) {
@@ -269,12 +268,11 @@ function generateUPC() {
     var obj = document.getElementById('bulkupc');
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
-    setTimeout(function() {
+    setTimeout(function () {
         obj.innerHTML = '<img height="50%" src="https://img.icons8.com/pulsar-color/48/barcode.png" alt="upc"/>&nbsp;批量UPC';
         obj.style.backgroundColor = "#f2f2f2";
         obj.style.color = "#000000";
-    },
-    3000);
+    }, 3000);
 }
 function countTextOcc() {
     var str1 = document.getElementById("linksstr").value;
@@ -289,41 +287,39 @@ function countTextOcc() {
     document.getElementById("countLinesNCommas").innerText = "行数：" + linesCount + " | 分词数：" + commasCount + " | 长度：" + linesLength;
 }
 function copyTextToClipboard(text) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
 }
 function copyAndRedirect() {
-    const code = "554e0e8654804bedad765a63330a1e75";
-    copyTextToClipboard(code);
-    const overlay = document.getElementById("overlay");
-    const popup = document.getElementById("popup");
-    const popupText = document.getElementById("popupText");
-    overlay.style.display = "block";
-    popupText.textContent = "已复制邀请码，3秒后跳转到 Greasyfork";
-    popup.style.display = "block";
+  const code = "554e0e8654804bedad765a63330a1e75";
+  copyTextToClipboard(code);
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popup");
+  const popupText = document.getElementById("popupText");
+  overlay.style.display = "block";
+  popupText.textContent = "已复制邀请码，3秒后跳转到 Greasyfork";
+  popup.style.display = "block";
+    
 
-    let countdown = 3;
-    const countdownInterval = setInterval(function() {
-        countdown -= 1;
-        if (countdown <= 0) {
-            clearInterval(countdownInterval);
-            popup.style.display = "none";
-            overlay.style.display = "none";
-            window.open("https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88");
-        } else {
-            popupText.textContent = `已复制邀请码，$ {
-                countdown
-            }秒后跳转到Greasyfork`;
-        }
-    },
-    1000);
+  let countdown = 3;
+  const countdownInterval = setInterval(function() {
+    countdown -= 1;
+    if (countdown <= 0) {
+      clearInterval(countdownInterval);
+      popup.style.display = "none";
+      overlay.style.display = "none";
+      window.open("https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88");
+    } else {
+      popupText.textContent = `已复制邀请码，${countdown}秒后跳转到 Greasyfork`;
+    }
+  }, 1000);
 }
 function openFacebookLinks() {
-    window.open('https://www.facebook.com/settings?tab=security', '_blank');
-    window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
+  window.open('https://www.facebook.com/settings?tab=security', '_blank');
+  window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
 }
 setInterval("refresh()", 1000);
