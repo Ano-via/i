@@ -287,39 +287,39 @@ function countTextOcc() {
     document.getElementById("countLinesNCommas").innerText = "行数：" + linesCount + " | 分词数：" + commasCount + " | 长度：" + linesLength;
 }
 function copyTextToClipboard(text) {
-  const textArea = document.createElement("textarea");
-  textArea.value = text;
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand("copy");
-  document.body.removeChild(textArea);
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
 }
 function copyAndRedirect() {
-  const code = "554e0e8654804bedad765a63330a1e75";
-  copyTextToClipboard(code);
-  const overlay = document.getElementById("overlay");
-  const popup = document.getElementById("popup");
-  const popupText = document.getElementById("popupText");
-  overlay.style.display = "block";
-  popupText.textContent = "已复制邀请码，3秒后跳转到 Greasyfork";
-  popup.style.display = "block";
-    
+    const code = "554e0e8654804bedad765a63330a1e75";
+    copyTextToClipboard(code);
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+    const popupText = document.getElementById("popupText");
+    overlay.style.display = "block";
+    popupText.textContent = "已复制邀请码，3秒后跳转到 Greasyfork";
+    popup.style.display = "block";
 
-  let countdown = 3;
-  const countdownInterval = setInterval(function() {
-    countdown -= 1;
-    if (countdown <= 0) {
-      clearInterval(countdownInterval);
-      popup.style.display = "none";
-      overlay.style.display = "none";
-      window.open("https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88");
-    } else {
-      popupText.textContent = `已复制邀请码，${countdown}秒后跳转到 Greasyfork`;
-    }
-  }, 1000);
+
+    let countdown = 3;
+    const countdownInterval = setInterval(function () {
+        countdown -= 1;
+        if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            popup.style.display = "none";
+            overlay.style.display = "none";
+            window.open("https://greasyfork.org/zh-CN/scripts/418942-%E4%B8%87%E8%83%BD%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5-%E5%8D%87%E7%BA%A7%E7%89%88");
+        } else {
+            popupText.textContent = `已复制邀请码，${countdown}秒后跳转到 Greasyfork`;
+        }
+    }, 1000);
 }
 function openFacebookLinks() {
-  window.open('https://www.facebook.com/settings?tab=security', '_blank');
-  window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
+    window.open('https://www.facebook.com/settings?tab=security', '_blank');
+    window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
 }
 setInterval("refresh()", 1000);
