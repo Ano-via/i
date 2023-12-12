@@ -106,27 +106,7 @@ function updatetmlresult() {
     }
 
     document.getElementById('utmresult').value = result;
-    saveText();
 
 }
 
-function saveText() {
-    const textboxes = document.querySelectorAll('.textbox');
-    textboxes.forEach(textbox => {
-        localStorage.setItem(textbox.id, textbox.value);
-    });
-    console.log('内容已保存！');
-}
-
-function restoreText() {
-    const textboxes = document.querySelectorAll('.textbox');
-    textboxes.forEach(textbox => {
-        const savedText = localStorage.getItem(textbox.id);
-        if (savedText !== null) {
-            textbox.value = savedText;
-        }
-    });
-    console.log('内容已恢复！');
-}
-restoreText();
 setInterval("updatetmlresult()", 1000);
