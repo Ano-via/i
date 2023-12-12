@@ -43,28 +43,28 @@ function shortenurl() {
             long_url: longUrl,
         }),
     })
-    .then(response => response.json())
-    .then(data => {
-        const shortUrl = data.link;
-        console.log(`Bitly短链接：${shortUrl}`);
-        document.getElementById("shortenedurl").value = shortUrl;
-        var copyText = document.getElementById("shortenedurl");
-        copyText.select();
-        copyText.setSelectionRange(0, 999);
-        document.execCommand("copy");
-        document.getElementById("shortenurl").innerHTML = "√ 已复制";
-        var obj = document.getElementById('shortenurl');
-        obj.style.backgroundColor = "#daf2c2";
-        obj.style.color = "#397300";
-        setTimeout(function () {
-            obj.innerHTML = "生成短链";
-            obj.style.backgroundColor = "#f2f2f2";
-            obj.style.color = "#000000";
-        }, 3000);
-    })
-    .catch(error => {
-        console.error('生成Bitly短链接时发生错误:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            const shortUrl = data.link;
+            console.log(`Bitly短链接：${shortUrl}`);
+            document.getElementById("shortenedurl").value = shortUrl;
+            var copyText = document.getElementById("shortenedurl");
+            copyText.select();
+            copyText.setSelectionRange(0, 999);
+            document.execCommand("copy");
+            document.getElementById("shortenurl").innerHTML = "√ 已复制";
+            var obj = document.getElementById('shortenurl');
+            obj.style.backgroundColor = "#daf2c2";
+            obj.style.color = "#397300";
+            setTimeout(function () {
+                obj.innerHTML = "生成短链";
+                obj.style.backgroundColor = "#f2f2f2";
+                obj.style.color = "#000000";
+            }, 3000);
+        })
+        .catch(error => {
+            console.error('生成Bitly短链接时发生错误:', error);
+        });
 }
 function updatetmlresult() {
     const websiteurl = document.getElementById('websiteurl').value;
@@ -106,7 +106,27 @@ function updatetmlresult() {
     }
 
     document.getElementById('utmresult').value = result;
+    saveText();
 
 }
 
+function saveText() {
+    const textboxes = document.querySelectorAll('.textbox');
+    textboxes.forEach(textbox => {
+        localStorage.setItem(textbox.id, textbox.value);
+    });
+    console.log('内容已保存！');
+}
+
+function restoreText() {
+    const textboxes = document.querySelectorAll('.textbox');
+    textboxes.forEach(textbox => {
+        const savedText = localStorage.getItem(textbox.id);
+        if (savedText !== null) {
+            textbox.value = savedText;
+        }
+    });
+    console.log('内容已恢复！');
+}
+restoreText();
 setInterval("updatetmlresult()", 1000);
