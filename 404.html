@@ -1,62 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Textarea URL Checker</title>
-<style>
-  .textarea-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  textarea {
-    width: 30%;
-    height: 150px;
-  }
-</style>
+  <title>Textarea URL Checker</title>
+  <script>
+    function checkURL() {
+      var urls = document.getElementById('textarea1').value.match(/\bhttps?:\/\/\S+/gi);
+      if (urls) {
+        urls.forEach(function(url) {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 404) {
+                document.getElementById('textarea3').value += url + ' - 404 Not Found\n';
+              } else {
+                document.getElementById('textarea2').value += url + '\n';
+              }
+            }
+          };
+          xhr.open('GET', url, true);
+          xhr.send();
+        });
+      }
+    }
+  </script>
 </head>
 <body>
-
-<div class="textarea-container">
-  <textarea id="textarea1" oninput="countLines('textarea1')"></textarea>
-  <textarea id="textarea2" oninput="countLines('textarea2')"></textarea>
-  <textarea id="textarea3" oninput="countLines('textarea3')"></textarea>
-</div>
-<button onclick="checkURL()">Check URL</button>
-
-<script>
-  function countLines(textareaId) {
-    const textarea = document.getElementById(textareaId);
-    const lines = textarea.value.split('\n').length;
-    document.getElementById(`${textareaId}-lines`).innerText = `Lines: ${lines}`;
-  }
-
-  function checkURL() {
-    const urls = document.getElementById('textarea1').value.match(/\bhttps?:\/\/\S+/gi);
-    const textarea2 = document.getElementById('textarea2');
-    const textarea3 = document.getElementById('textarea3');
-
-    if (urls) {
-      urls.forEach(url => {
-        fetch(url, { method: 'HEAD' })
-          .then(response => {
-            if (response.ok) {
-              return response;
-            } else {
-              return Promise.reject(new Error('URL not found'));
-            }
-          })
-          .then(() => {
-            textarea2.value += url + '\n';
-            countLines('textarea2');
-          })
-          .catch(() => {
-            textarea3.value += url + '\n';
-            countLines('textarea3');
-          });
-      });
-    }
-  }
-</script>
-
+  <textarea id="textarea1" rows="5" cols="50" oninput="this.rows = this.value.split('\n').length"></textarea><br>
+  <button onclick="checkURL()">Check URL</button><br>
+  <textarea id="textarea2" rows="5" cols="50" oninput="this.rows = this.value.split('\n').length"></textarea>
+  <textarea id="textarea3" rows="5" cols="50" oninput="this.rows = this.value.split('\n').length"></textarea>
 </body>
 </html>
