@@ -1,86 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Email Fetcher</title>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    th, td {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Email Viewer</title>
+    <script>
+        async function getEmails() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const imap = document.getElementById('imap').value;
+            const ssl = document.getElementById('ssl').checked;
+
+            // 发送请求到后端
+            const response = await fetch('/get-emails', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password, imap, ssl })
+            });
+
+            const emails = await response.json();
+
+            // 将获取的邮件内容显示在表格中
+            const emailTable = document.getElementById('emailTable');
+            emailTable.innerHTML = ''; // 清空表格内容
+
+            emails.forEach(email => {
+                const row = `<tr>
+                                <td>${email.title}</td>
+                                <td>${email.content}</td>
+                                <td>${email.time}</td>
+                            </tr>`;
+                emailTable.innerHTML += row;
+            });
+        }
+    </script>
 </head>
 <body>
-  <h1>Email Fetcher</h1>
-  <form id="emailForm">
+    <h1>Email Viewer</h1>
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
+    <input type="email" id="email" placeholder="Enter your email"><br><br>
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
+    <input type="password" id="password" placeholder="Enter your password"><br><br>
 
     <label for="imap">IMAP Server:</label>
-    <input type="text" id="imap" name="imap" required><br><br>
+    <input type="text" id="imap" placeholder="Enter IMAP server"><br><br>
 
     <label for="ssl">SSL:</label>
-    <input type="checkbox" id="ssl" name="ssl"><br><br>
+    <input type="checkbox" id="ssl"><br><br>
 
-    <button type="button" onclick="getEmails()">Get Emails</button>
-  </form>
+    <button onclick="getEmails()">Get Emails</button><br><br>
 
-  <h2>Emails:</h2>
-  <table id="emailTable">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody id="emailBody">
-      <!-- Emails will be displayed here -->
-    </tbody>
-  </table>
-
-  <script>
-    function getEmails() {
-      // Fetch emails logic here (requires backend handling due to security concerns)
-      // Placeholder logic to populate the table for demonstration purposes
-      const emailTable = document.getElementById('emailBody');
-      emailTable.innerHTML = ''; // Clear previous entries
-
-      // Placeholder data
-      const emails = [
-        { title: 'Sample Email 1', content: 'This is the content of sample email 1.', date: '2024-01-08' },
-        { title: 'Sample Email 2', content: 'This is the content of sample email 2.', date: '2024-01-07' },
-        // Add more emails as needed
-      ];
-
-      emails.slice(0, 10).forEach(email => {
-        const row = document.createElement('tr');
-        const titleCell = document.createElement('td');
-        const contentCell = document.createElement('td');
-        const dateCell = document.createElement('td');
-
-        titleCell.textContent = email.title;
-        contentCell.textContent = email.content;
-        dateCell.textContent = email.date;
-
-        row.appendChild(titleCell);
-        row.appendChild(contentCell);
-        row.appendChild(dateCell);
-
-        emailTable.appendChild(row);
-      });
-    }
-  </script>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody id="emailTable">
+            <!-- 这里将显示获取的邮件 -->
+        </tbody>
+    </table>
 </body>
 </html>
