@@ -222,7 +222,7 @@ textarea::placeholder{
 }
 /* 清除浮动 兼容低版本IE */
 .clearfix{
-    *zoom: 1;
+    zoom: 1;
 }
 /* 清除一级菜单栏浮动的操作 */
 .clearfix ::after{
