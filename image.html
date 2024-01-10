@@ -1,60 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>URLs to Table</title>
-<style>
-/* CSS 样式，可根据需要修改 */
-table {
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+    <meta charset="UTF-8">
+    <title>URLs to Table</title>
+    <style>
+        .content {
+            display: grid;
+            place-items: center;
+        }
+        button {
+            margin-top: 5px;
+            width: 375px;
+        }
+        /* CSS 样式，可根据需要修改 */
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
 
-img {
-    max-width: 150px;
-    height: auto;
-}
-</style>
+        img {
+            max-width: 150px;
+            height: auto;
+        }
+    </style>
 </head>
+
 <body>
-<textarea id="urlText" rows="10" cols="50">
+    <h1 style="text-align: center;">URLs to Table</h1>
+    <div class="content">
+        <textarea id="urlText" rows="10" cols="50">
 https://example.com/image1.jpg
 https://example.com/image2.jpg
-https://example.com/image3.jpg
-</textarea>
-<button onclick="createTable()">Create Table</button>
-<div id="tableContainer"></div>
+https://example.com/image3.jpg</textarea>
+        <button onclick="createTable()">Create Table</button>
+    </div>
+    <div class="content">
+        <div id="tableContainer"></div>
+    </div>
+    <script>
+        function createTable() {
+            const urlText = document.getElementById('urlText').value;
+            const urls = urlText.split('\n').filter(Boolean);
 
-<script>
-function createTable() {
-    const urlText = document.getElementById('urlText').value;
-    const urls = urlText.split('\n').filter(Boolean);
+            const table = document.createElement('table');
+            const numRows = Math.ceil(urls.length / 10);
 
-    const table = document.createElement('table');
-    const numRows = Math.ceil(urls.length / 10);
+            for (let i = 0; i < numRows; i++) {
+                const row = table.insertRow();
 
-    for (let i = 0; i < numRows; i++) {
-        const row = table.insertRow();
-
-        for (let j = 0; j < 10; j++) {
-            const index = i * 10 + j;
-            if (index < urls.length) {
-                const cell = row.insertCell();
-                const img = document.createElement('img');
-                img.src = urls[index];
-                img.style.maxWidth = '150px'; // 设置图片最大宽度
-                cell.appendChild(img);
-            } else {
-                break;
+                for (let j = 0; j < 10; j++) {
+                    const index = i * 10 + j;
+                    if (index < urls.length) {
+                        const cell = row.insertCell();
+                        const img = document.createElement('img');
+                        img.src = urls[index];
+                        img.style.maxWidth = '150px'; // 设置图片最大宽度
+                        cell.appendChild(img);
+                    } else {
+                        break;
+                    }
+                }
             }
-        }
-    }
 
-    const tableContainer = document.getElementById('tableContainer');
-    tableContainer.innerHTML = '';
-    tableContainer.appendChild(table);
-}
-</script>
+            const tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = '';
+            tableContainer.appendChild(table);
+        }
+    </script>
 </body>
+
 </html>
