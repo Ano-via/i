@@ -88,12 +88,12 @@ function tinyurl() {
             copyText.select();
             copyText.setSelectionRange(0, 999);
             document.execCommand("copy");
-            document.getElementById("tinyurl").innerHTML = "√ 已复制";
-            var obj = document.getElementById('tinyurl');
+            document.getElementById("shortenurl").innerHTML = "√ 已复制";
+            var obj = document.getElementById('shortenurl');
             obj.style.backgroundColor = "#daf2c2";
             obj.style.color = "#397300";
             setTimeout(function () {
-                obj.innerHTML = "备用1";
+                obj.innerHTML = "生成短链";
                 obj.style.backgroundColor = "#f2f2f2";
                 obj.style.color = "#000000";
             }, 3000);
@@ -102,6 +102,8 @@ function tinyurl() {
             console.error('生成TinyURL短链接时发生错误:', error);
         });
 }
+
+
 
 
 function updatetmlresult() {
