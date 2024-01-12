@@ -77,30 +77,7 @@ function shortenurl() {
 function tinyurl() {
     const apiUrl = 'http://tinyurl.com/api-create.php';
     const longUrl = document.getElementById("utmresult").value;
-
-    fetch(`${apiUrl}?url=${longUrl}`)
-        .then(response => response.text())
-        .then(data => {
-            const shortUrl = data;
-            console.log(`TinyURL短链接：${shortUrl}`);
-            document.getElementById("shortenedurl").value = shortUrl;
-            var copyText = document.getElementById("shortenedurl");
-            copyText.select();
-            copyText.setSelectionRange(0, 999);
-            document.execCommand("copy");
-            document.getElementById("shortenurl").innerHTML = "√ 已复制";
-            var obj = document.getElementById('shortenurl');
-            obj.style.backgroundColor = "#daf2c2";
-            obj.style.color = "#397300";
-            setTimeout(function () {
-                obj.innerHTML = "生成短链";
-                obj.style.backgroundColor = "#f2f2f2";
-                obj.style.color = "#000000";
-            }, 3000);
-        })
-        .catch(error => {
-            console.error('生成TinyURL短链接时发生错误:', error);
-        });
+    window.open(`${apiUrl}?url=${longUrl}`, '_blank');
 }
 
 
