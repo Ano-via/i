@@ -40,7 +40,8 @@ function shortenurl() {
     const accessToken = '13ff8fc9c4983636f414ad6ca51b7acf6cb2d857';
     const longUrl = document.getElementById("utmresult").value;
     const apiUrl = 'https://api-ssl.bitly.com/v4/shorten';
-
+    document.getElementById("shortenurl").innerHTML = "生成中";
+    document.getElementById("shortenedurl").value = "";
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -72,13 +73,58 @@ function shortenurl() {
         })
         .catch(error => {
             console.error('生成Bitly短链接时发生错误:', error);
+            document.getElementById("shortenurl").innerHTML = "生成短链";
         });
 }
 function tinyurl() {
-    const apiUrl = 'http://tinyurl.com/api-create.php';
+    const apiToken = 'PC7gbIfGAUctHLmuVcJYfqzMuUthyotURHhvxpz8QnZ5t9UTkrZcK48TC2Ru';
+    const apiUrl = 'https://api.tinyurl.com/create';
     const longUrl = document.getElementById("utmresult").value;
-    window.open(`${apiUrl}?url=${longUrl}`, '_blank');
+    const headers = {
+        'Authorization': `Bearer ${apiToken}`,
+        'Content-Type': 'application/json',
+    };
+    const requestBody = {
+        "url": longUrl
+    };
+    document.getElementById("tinyurl").innerHTML = "生成中";
+    document.getElementById("shortenedurl").value = "";
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(requestBody),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.code === 0) {
+                console.log('TinyURL created successfully:', data.data.tiny_url);
+                const shortUrl = data.data.tiny_url;
+                document.getElementById("shortenedurl").value = shortUrl;
+                var copyText = document.getElementById("shortenedurl");
+                copyText.select();
+                copyText.setSelectionRange(0, 999);
+                document.execCommand("copy");
+                document.getElementById("tinyurl").innerHTML = "√ 已复制";
+                var obj = document.getElementById('tinyurl');
+                obj.style.backgroundColor = "#daf2c2";
+                obj.style.color = "#397300";
+                setTimeout(function () {
+                    obj.innerHTML = "备用1";
+                    obj.style.backgroundColor = "#f2f2f2";
+                    obj.style.color = "#000000";
+                }, 3000);
+            } else {
+                console.error('Error creating TinyURL:', data.errors.join(', '));
+                document.getElementById("tinyurl").innerHTML = "备用1";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("tinyurl").innerHTML = "备用1";
+        });
 }
+
 
 
 
