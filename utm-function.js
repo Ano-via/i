@@ -96,9 +96,8 @@ function tinyurl() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if (data.code === 0) {
-                console.log('TinyURL created successfully:', data.data.tiny_url);
+                console.log('TinyURL短链接：', data.data.tiny_url);
                 const shortUrl = data.data.tiny_url;
                 document.getElementById("shortenedurl").value = shortUrl;
                 var copyText = document.getElementById("shortenedurl");
@@ -115,7 +114,7 @@ function tinyurl() {
                     obj.style.color = "#000000";
                 }, 3000);
             } else {
-                console.error('Error creating TinyURL:', data.errors.join(', '));
+                console.error('生成Tinyurl短链接时发生错误:', data.errors.join(', '));
                 document.getElementById("tinyurl").innerHTML = "备用1";
             }
         })
