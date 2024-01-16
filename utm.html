@@ -48,17 +48,35 @@
         <input id="temp1" style="display:none">
         <div class="popup" id="popup">
             <div class="popup-content">
-                <h3>Facebook / Meta</h3>
-                <button class="button2" onclick="insertField('{{campaign_id}}')">campaign_id</button>
-                <button class="button2" onclick="insertField('{{adset_id}}')">adset_id</button>
-                <button class="button2" onclick="insertField('{{ad_id}}')">ad_id</button>
-                <h3>TikTok</h3>
-                <button class="button2" onclick="insertField('__CAMPAIGN_NAME__')">Campaign Name</button>
-                <button class="button2" onclick="insertField('__CAMPAIGN_ID__')">Campaign ID</button>
-                <button class="button2" onclick="insertField('__AID_NAME__')">Adset Name</button>
-                <button class="button2" onclick="insertField('__AID__')">Adset ID</button>
-                <button class="button2" onclick="insertField('__CID_NAME__')">Ad / Creative Name</button>
-                <button class="button2" onclick="insertField('__CID__')">Creative ID</button><br>
+                <img src="https://static.xx.fbcdn.net/rsrc.php/yb/r/CnOoIyhtLSO.svg" height="20"><h3>Facebook / Meta</h3>
+                <button class="button2" onclick="insertField('{{campaign.name}}')">系列名</button>
+                <button class="button2" onclick="insertField('{{adset.name}}')">广告组名</button>
+                <button class="button2" onclick="insertField('{{ad.name}}')">广告名</button><br>
+                <button class="button2" onclick="insertField('{{campaign.id}}')">系列 ID</button>                
+                <button class="button2" onclick="insertField('{{adset.id}}')">广告组 ID</button>                
+                <button class="button2" onclick="insertField('{{ad.id}}')">广告 ID</button><br>
+                <button class="button2" onclick="insertField('{{placement}}')">版位</button>
+                <button class="button2" onclick="insertField('{{site_source_name}}')">网站来源名</button>
+                <img src="https://www.gstatic.com/awn/awsm//brt/awn_awsm_auto_20240110-2048_RC000/aw_blend/ads_favicon.ico" height="28"><h3>Google</h3>
+                <button class="button2" onclick="insertField('{campaignid}')">系列 ID</button>
+                <button class="button2" onclick="insertField('{adgroupid}')">广告组 ID</button>
+                <button class="button2" onclick="insertField('{creative}')">广告 ID</button>
+                <button class="button2" onclick="insertField('{targetid}')">目标 ID</button><br>
+                <button class="button2" onclick="insertField('{matchtype}')">匹配类型</button>
+                <button class="button2" onclick="insertField('{network}')">广告网络</button>
+                <button class="button2" onclick="insertField('{device}')">设备</button>                
+                <button class="button2" onclick="insertField('{keyword}')">关键字</button>
+                <button class="button2" onclick="insertField('{placement}')">版位</button>
+                <button class="button2" onclick="insertField('{target}')">位置类别</button>
+                <button class="button2" onclick="insertField('{adtype}')">广告类型</button>
+                <img src="https://sf16-scmcdn-sg.ibytedtos.com/obj/goofy-sg/account_center_i18n_web_v2/sg/statics_v2/images/favicon.ico" height="30"><h3>TikTok</h3>
+                <button class="button2" onclick="insertField('__CAMPAIGN_NAME__')">系列名</button>
+                <button class="button2" onclick="insertField('__AID_NAME__')">广告组名</button>
+                <button class="button2" onclick="insertField('__CID_NAME__')">广告 / 素材名</button><br>
+                <button class="button2" onclick="insertField('__CAMPAIGN_ID__')">系列 ID</button>                
+                <button class="button2" onclick="insertField('__AID__')">广告组 ID</button>              
+                <button class="button2" onclick="insertField('__CID__')">素材 ID</button>
+                <button class="button2" onclick="insertField('__PLACEMENT__')">版位</button><br>
                 <h3>Cancel&nbsp;<button class="button2" onclick="closePopup()">&nbsp;x&nbsp;</button></h3>
             </div>
         </div>
