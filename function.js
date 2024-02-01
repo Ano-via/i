@@ -318,8 +318,12 @@ function copyAndRedirect() {
         }
     }, 1000);
 }
-function openFacebookLinks() {
-    window.open('https://www.facebook.com/settings?tab=security', '_blank');
+function metaCheck() {
+    window.open('https://accountscenter.facebook.com/personal_info/contact_points/', '_blank');
+    window.open('https://account.live.com/proofs/manage/additional', '_blank');
     window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
+    window.open('https://accountscenter.facebook.com/password_and_security/login_alerts', '_blank');
+    window.open('https://business.facebook.com/business-support-home/?landing_page=account_overview', '_blank');
+    window.open('https://business.facebook.com/settings/info', '_blank');
 }
 setInterval("refresh()", 1000);
