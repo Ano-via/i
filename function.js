@@ -135,10 +135,16 @@ function openlinks() {
     var linksstr = document.getElementById("linksstr").value;
     linklist = linksstr.split("\n");
     for (i = 0; i < linklist.length; i++) {
-        s = linklist[i];
+        var s;
+        if (!linklist[i].includes("http")) {
+            s = "http://" + linklist[i];
+        } else {
+            s = linklist[i];
+        }
         window.open(s);
     }
 }
+
 
 function svttrack() {
     var linksstr = document.getElementById("linksstr").value;
