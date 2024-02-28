@@ -17,64 +17,81 @@
         <div>
 
             <span style="margin-top:20px; font-size:24px">网　址：</span><input type="text" placeholder="URL"
-                id="websiteurl" class="textbox" style="width:570px"><button class="btn4 button"
+                id="websiteurl" class="textbox" style="width:570px;margin-top:10px;"><button class="btn4 button"
                 onclick="openLinkInNewTab()">→</button><br>
             <span style="margin-top:20px; font-size:24px">I　　D：</span><input type="text" placeholder="utm_id"
-                class="textbox" style="width:570px" id="utm_id"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_id"><button class="btn4 button"
                 onclick="showPopup('utm_id')">+</button><br>
             <span style="margin-top:20px; font-size:24px">来　源：</span><input type="text" placeholder="utm_source"
-                class="textbox" style="width:570px" id="utm_source"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_source"><button class="btn4 button"
                 onclick="showPopup('utm_source')">+</button><br>
             <span style="margin-top:20px; font-size:24px">媒　介：</span><input type="text" placeholder="utm_medium"
-                class="textbox" style="width:570px" id="utm_medium"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_medium"><button class="btn4 button"
                 onclick="showPopup('utm_medium')">+</button><br>
             <span style="margin-top:20px; font-size:24px">系　列：</span><input type="text" placeholder="utm_campaign"
-                class="textbox" style="width:570px" id="utm_campaign"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_campaign"><button class="btn4 button"
                 onclick="showPopup('utm_campaign')">+</button><br>
             <span style="margin-top:20px; font-size:24px">广告组：</span><input type="text" placeholder="utm_adset"
-                class="textbox" style="width:570px" id="utm_adset"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_adset"><button class="btn4 button"
                 onclick="showPopup('utm_adset')">+</button><br>
             <span style="margin-top:20px; font-size:24px">广　告：</span><input type="text" placeholder="utm_ad"
-                class="textbox" style="width:570px" id="utm_ad"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_ad"><button class="btn4 button"
                 onclick="showPopup('utm_ad')">+</button><br>
             <span style="margin-top:20px; font-size:24px">关键字：</span><input type="text" placeholder="utm_term"
-                class="textbox" style="width:570px" id="utm_term"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_term"><button class="btn4 button"
                 onclick="showPopup('utm_term')">+</button><br>
             <span style="margin-top:20px; font-size:24px">内　容：</span><input type="text" placeholder="utm_content"
-                class="textbox" style="width: 570px" id="utm_content"><button class="btn4 button"
+                class="textbox" style="width:570px;margin-top:10px;" id="utm_content"><button class="btn4 button"
                 onclick="showPopup('utm_content')">+</button>
         </div>
-        <textarea placeholder="UTM结果" id="utmresult" style="width:720px" rows="5"></textarea>
+        <table>
+            <tbody>
+                <tr>
+                    <th><textarea placeholder="UTM结果" id="utmresult" style="width:530px;margin-top:10px;" rows="5"></textarea></th>
+                    <th>
+                        <div class="btn2 button" onclick="openLinkInNewTab2()" style="margin-top:10px;">→</div>
+                        <div class="btn2 button" onclick="reurl()" id="reurl" style="margin-top:10px;" title="reurl.cc">备用2&nbsp;ⓘ</div>
+                    </th>
+                </tr>
+                </tr>
+            </tbody>
+        </table>
+
         <input id="temp1" style="display:none">
         <div class="popup" id="popup">
             <div class="popup-content">
-                <img src="https://static.xx.fbcdn.net/rsrc.php/yb/r/CnOoIyhtLSO.svg" height="20"><h3>Facebook / Meta</h3>
+                <img src="https://static.xx.fbcdn.net/rsrc.php/yb/r/CnOoIyhtLSO.svg" height="20">
+                <h3>Facebook / Meta</h3>
                 <button class="button2" onclick="insertField('{{campaign.name}}')">系列名</button>
                 <button class="button2" onclick="insertField('{{adset.name}}')">广告组名</button>
                 <button class="button2" onclick="insertField('{{ad.name}}')">广告名</button><br>
-                <button class="button2" onclick="insertField('{{campaign.id}}')">系列 ID</button>                
-                <button class="button2" onclick="insertField('{{adset.id}}')">广告组 ID</button>                
+                <button class="button2" onclick="insertField('{{campaign.id}}')">系列 ID</button>
+                <button class="button2" onclick="insertField('{{adset.id}}')">广告组 ID</button>
                 <button class="button2" onclick="insertField('{{ad.id}}')">广告 ID</button><br>
                 <button class="button2" onclick="insertField('{{placement}}')">版位</button>
                 <button class="button2" onclick="insertField('{{site_source_name}}')">网站来源名</button>
-                <img src="https://www.gstatic.com/awn/awsm//brt/awn_awsm_auto_20240110-2048_RC000/aw_blend/ads_favicon.ico" height="28"><h3>Google</h3>
+                <img src="https://www.gstatic.com/awn/awsm//brt/awn_awsm_auto_20240110-2048_RC000/aw_blend/ads_favicon.ico"
+                    height="28">
+                <h3>Google</h3>
                 <button class="button2" onclick="insertField('{campaignid}')">系列 ID</button>
                 <button class="button2" onclick="insertField('{adgroupid}')">广告组 ID</button>
                 <button class="button2" onclick="insertField('{creative}')">广告 ID</button>
                 <button class="button2" onclick="insertField('{targetid}')">目标 ID</button><br>
                 <button class="button2" onclick="insertField('{matchtype}')">匹配类型</button>
                 <button class="button2" onclick="insertField('{network}')">广告网络</button>
-                <button class="button2" onclick="insertField('{device}')">设备</button>                
+                <button class="button2" onclick="insertField('{device}')">设备</button>
                 <button class="button2" onclick="insertField('{keyword}')">关键字</button>
                 <button class="button2" onclick="insertField('{placement}')">版位</button>
                 <button class="button2" onclick="insertField('{target}')">位置类别</button>
                 <button class="button2" onclick="insertField('{adtype}')">广告类型</button>
-                <img src="https://sf16-scmcdn-sg.ibytedtos.com/obj/goofy-sg/account_center_i18n_web_v2/sg/statics_v2/images/favicon.ico" height="30"><h3>TikTok</h3>
+                <img src="https://sf16-scmcdn-sg.ibytedtos.com/obj/goofy-sg/account_center_i18n_web_v2/sg/statics_v2/images/favicon.ico"
+                    height="30">
+                <h3>TikTok</h3>
                 <button class="button2" onclick="insertField('__CAMPAIGN_NAME__')">系列名</button>
                 <button class="button2" onclick="insertField('__AID_NAME__')">广告组名</button>
                 <button class="button2" onclick="insertField('__CID_NAME__')">广告 / 素材名</button><br>
-                <button class="button2" onclick="insertField('__CAMPAIGN_ID__')">系列 ID</button>                
-                <button class="button2" onclick="insertField('__AID__')">广告组 ID</button>              
+                <button class="button2" onclick="insertField('__CAMPAIGN_ID__')">系列 ID</button>
+                <button class="button2" onclick="insertField('__AID__')">广告组 ID</button>
                 <button class="button2" onclick="insertField('__CID__')">素材 ID</button>
                 <button class="button2" onclick="insertField('__PLACEMENT__')">版位</button><br>
                 <h3>Cancel&nbsp;<button class="button2" onclick="closePopup()">&nbsp;x&nbsp;</button></h3>
@@ -84,15 +101,15 @@
             <tbody>
                 <tr>
                     <th>
-                        <div class="btn1 button" onclick="copyutmresult()" id="copybefore">复制上面</div>
+                        <div class="btn1 button" onclick="copyutmresult()" id="copybefore" style="margin-top:10px;">复制上面</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="shortenurl()" id="shortenurl">生成短链</div>
+                        <div class="btn2 button" onclick="shortenurl()" id="shortenurl" style="margin-top:10px;" title="bit.ly">生成短链&nbsp;ⓘ</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="tinyurl()" id="tinyurl">备用1</div>
+                        <div class="btn2 button" onclick="tinyurl()" id="tinyurl" style="margin-top:10px;" title="tinyurl.com">备用1&nbsp;ⓘ</div>
                     </th>
-                    <th><input class="input2" id="shortenedurl"></th>
+                    <th><input class="input2" id="shortenedurl" style="margin-top:10px;"></th>
                 </tr>
             </tbody>
         </table>
@@ -100,11 +117,12 @@
 
 
     <div id="footer">
-		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-		<span id="busuanzi_container_site_pv">总访问量：<span id="busuanzi_value_site_pv"><i
-					class="fa fa-spinner"></i></span>次。</span>
-		<span id="busuanzi_container_page_pv">本页访问量：<span id="busuanzi_value_page_pv"><i class="fa fa-spinner"></i></span>次。</span>
-	</div>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">总访问量：<span id="busuanzi_value_site_pv"><i
+                    class="fa fa-spinner"></i></span>次。</span>
+        <span id="busuanzi_container_page_pv">本页访问量：<span id="busuanzi_value_page_pv"><i
+                    class="fa fa-spinner"></i></span>次。</span>
+    </div>
 </body>
 
 </html>

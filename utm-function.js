@@ -6,6 +6,14 @@ function openLinkInNewTab() {
         alert('请输入链接');
     }
 }
+function openLinkInNewTab2() {
+    var link = document.getElementById('utmresult').value;
+    if (link.trim() !== '') {
+        window.open(link, '_blank');
+    } else {
+        alert('请输入链接');
+    }
+}
 function showPopup(temp1) {
     document.getElementById("popup").style.display = "block";
     document.getElementById("temp1").value = temp1;
@@ -124,6 +132,60 @@ function tinyurl() {
         });
 }
 
+function reurl() {
+    const apiKey = '4070ff49d794e63018503b663c974755ecd6b637939a04df8a38b58d65165567c4f5d6';
+    const apiUrl = 'https://api.reurl.cc/shorten';
+    const longUrl = document.getElementById("utmresult").value;
+    
+    const headers = {
+        'Content-Type': 'application/json',
+        'reurl-api-key': apiKey,
+    };
+
+    const requestBody = {
+        "url": longUrl
+    };
+
+    document.getElementById("shortenedurl").value = "";
+    document.getElementById("reurl").innerHTML = "生成中";
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(requestBody),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.res === "success") {
+            console.log('Shortened URL:', data.short_url);
+            const shortUrl = data.short_url;
+            document.getElementById("shortenedurl").value = shortUrl;
+
+            var copyText = document.getElementById("shortenedurl");
+            copyText.select();
+            copyText.setSelectionRange(0, 999);
+            document.execCommand("copy");
+
+            document.getElementById("reurl").innerHTML = "√ 已复制";
+            var obj = document.getElementById('reurl');
+            obj.style.backgroundColor = "#daf2c2";
+            obj.style.color = "#397300";
+
+            setTimeout(function () {
+                obj.innerHTML = "备用2";
+                obj.style.backgroundColor = "#f2f2f2";
+                obj.style.color = "#000000";
+            }, 3000);
+        } else {
+            console.error('Error:', data.msg);
+            document.getElementById("reurl").innerHTML = "备用2";
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById("reurl").innerHTML = "备用2";
+    });
+}
 
 
 
