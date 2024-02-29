@@ -44,18 +44,9 @@
                 class="textbox" style="width:570px;margin-top:10px;" id="utm_content"><button class="btn4 button"
                 onclick="showPopup('utm_content')">+</button>
         </div>
-        <table>
-            <tbody>
-                <tr>
-                    <th><textarea placeholder="UTM结果" id="utmresult" style="width:530px;margin-top:10px;" rows="5"></textarea></th>
-                    <th>
-                        <div class="btn2 button" onclick="openLinkInNewTab2()" style="margin-top:10px;">→</div>
-                        <div class="btn2 button" onclick="reurl()" id="reurl" style="margin-top:10px;" title="reurl.cc">备用2&nbsp;ⓘ</div>
-                    </th>
-                </tr>
-                </tr>
-            </tbody>
-        </table>
+
+                    <textarea placeholder="UTM结果" id="utmresult" style="width:720px;margin-top:10px;" rows="5"></textarea>
+
 
         <input id="temp1" style="display:none">
         <div class="popup" id="popup">
@@ -101,15 +92,18 @@
             <tbody>
                 <tr>
                     <th>
-                        <div class="btn1 button" onclick="copyutmresult()" id="copybefore" style="margin-top:10px;">复制上面</div>
+                        <div class="btn1 button" onclick="copyutmresult()" id="copybefore" style="margin-top:10px;width:135px;">复制上面</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="shortenurl()" id="shortenurl" style="margin-top:10px;" title="bit.ly">生成短链&nbsp;ⓘ</div>
+                        <div class="btn2 button" onclick="shortenurl()" id="shortenurl" style="margin-top:10px;margin-left:10px;width:135px;" title="bit.ly">生成短链&nbsp;ⓘ</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="tinyurl()" id="tinyurl" style="margin-top:10px;" title="tinyurl.com">备用1&nbsp;ⓘ</div>
+                        <div class="btn2 button" onclick="tinyurl()" id="tinyurl" style="margin-top:10px;margin-left:10px;width:135px;" title="tinyurl.com">备用1&nbsp;ⓘ</div>
                     </th>
-                    <th><input class="input2" id="shortenedurl" style="margin-top:10px;"></th>
+                    <th>
+                        <div class="btn2 button" onclick="reurl()" id="reurl" style="margin-top:10px;margin-left:10px;width:135px;" title="reurl.cc">备用2&nbsp;ⓘ</div>
+                    </th>
+                    <th><input class="input2" id="shortenedurl" style="margin-top:10px;margin-left:10px;width:135px;"></th>
                 </tr>
             </tbody>
         </table>
