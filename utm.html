@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="utm-function.js"></script>
     <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -18,7 +18,7 @@
 
             <span style="margin-top:20px; font-size:24px">网　址：</span><input type="text" placeholder="URL"
                 id="websiteurl" class="textbox" style="width:570px;margin-top:10px;"><button class="btn4 button"
-                onclick="openLinkInNewTab()">→</button><br>
+                onclick="openLinkInNewTab()">↗</button><br>
             <span style="margin-top:20px; font-size:24px">I　　D：</span><input type="text" placeholder="utm_id"
                 class="textbox" style="width:570px;margin-top:10px;" id="utm_id"><button class="btn4 button"
                 onclick="showPopup('utm_id')">+</button><br>
@@ -92,18 +92,19 @@
             <tbody>
                 <tr>
                     <th>
-                        <div class="btn1 button" onclick="copyutmresult()" id="copybefore" style="margin-top:10px;width:135px;">复制上面</div>
+                        <div class="btn1 button" onclick="copyutmresult()" id="copybefore" style="margin-top:10px;width:123px;">复制上面</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="shortenurl()" id="shortenurl" style="margin-top:10px;margin-left:10px;width:135px;" title="bit.ly"><img src="https://d1ayxb9ooonjts.cloudfront.net/0482a3c938673192a591f2845b9eb275.png" height="22">&nbsp;生成短链&nbsp;ⓘ</div>
+                        <div class="btn2 button" onclick="shortenurl()" id="shortenurl" style="margin-top:10px;margin-left:10px;width:123px;" title="bit.ly"><img src="https://d1ayxb9ooonjts.cloudfront.net/0482a3c938673192a591f2845b9eb275.png" height="22">&nbsp;生成短链&nbsp;ⓘ</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="tinyurl()" id="tinyurl" style="margin-top:10px;margin-left:10px;width:135px;" title="tinyurl.com"><img src="https://tinyurl.com/images/icons/favicon-32.png" height="22">&nbsp;备用1&nbsp;ⓘ</div>
+                        <div class="btn2 button" onclick="tinyurl()" id="tinyurl" style="margin-top:10px;margin-left:10px;width:123px;" title="tinyurl.com"><img src="https://tinyurl.com/images/icons/favicon-32.png" height="22">&nbsp;备用1&nbsp;ⓘ</div>
                     </th>
                     <th>
-                        <div class="btn2 button" onclick="reurl()" id="reurl" style="margin-top:10px;margin-left:10px;width:135px;" title="reurl.cc"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByklEQVR4AX2RM3gmUQBFb2zbts1mbTdr27ZtM7adlMtmzWZtb72qksl93/9m4hRnfM48QFEUBPj7azhZWCFx0kSgohpB2VkIzM6+SBTyiwwiUBFuj4CHoxOi0lKBsnIE5uamSfkPaZPXo/oKuJByctzF0hpJG9cD5RWjOQohzSV2MvCir8BDogQEBCgu1rbXIpOTgJLSgf55eULaJKUPMmLYPbCYKOQ8OaGL2JxM3rkjDsUlQlhIIOWfvY3goAysJPD3829xs3f4mLJl8zCOQkjPyDcZWNRbYLQMvNUF/Ay4mIXJ27dNkQGV1f3tQraMtHIEiruD452UrVvUEVwMyZFiPwHBBvI/kGtgb2K2iYE0GdjAwGjiRCDpNYCgoCA4mlkgMiEeJkXFo7zz80RgFoVG8rnfgJDd7Ozh5eyC4HNngdKyUcFZWSIwlcIyopBbPQJerm7wdneHnYkpPBwcEbdnF1BRhZCsrFFy8TZIqU5GbhB9LRAcGgp/jiA6NQXRx44KGfwzKKqB7QQyUi8jB7RABIcbdfYsDIqKxbBVWTCme0DyglzWAo6FRbAvKoJnfj6CdKJKpgzsIOgUMRdoAb7oj2fkQLeAtojtiSOToai1IMsAAAAASUVORK5CYII=" height="22">&nbsp;备用2(台湾)&nbsp;ⓘ</div>
+                        <div class="btn2 button" onclick="reurl()" id="reurl" style="margin-top:10px;margin-left:10px;width:123px;" title="reurl.cc"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByklEQVR4AX2RM3gmUQBFb2zbts1mbTdr27ZtM7adlMtmzWZtb72qksl93/9m4hRnfM48QFEUBPj7azhZWCFx0kSgohpB2VkIzM6+SBTyiwwiUBFuj4CHoxOi0lKBsnIE5uamSfkPaZPXo/oKuJByctzF0hpJG9cD5RWjOQohzSV2MvCir8BDogQEBCgu1rbXIpOTgJLSgf55eULaJKUPMmLYPbCYKOQ8OaGL2JxM3rkjDsUlQlhIIOWfvY3goAysJPD3829xs3f4mLJl8zCOQkjPyDcZWNRbYLQMvNUF/Ay4mIXJ27dNkQGV1f3tQraMtHIEiruD452UrVvUEVwMyZFiPwHBBvI/kGtgb2K2iYE0GdjAwGjiRCDpNYCgoCA4mlkgMiEeJkXFo7zz80RgFoVG8rnfgJDd7Ozh5eyC4HNngdKyUcFZWSIwlcIyopBbPQJerm7wdneHnYkpPBwcEbdnF1BRhZCsrFFy8TZIqU5GbhB9LRAcGgp/jiA6NQXRx44KGfwzKKqB7QQyUi8jB7RABIcbdfYsDIqKxbBVWTCme0DyglzWAo6FRbAvKoJnfj6CdKJKpgzsIOgUMRdoAb7oj2fkQLeAtojtiSOToai1IMsAAAAASUVORK5CYII=" height="22">&nbsp;台湾&nbsp;ⓘ</div>
                     </th>
-                    <th><input class="input2" id="shortenedurl" style="margin-top:10px;margin-left:10px;width:135px;"></th>
+                    <th><input class="input2" id="shortenedurl" style="margin-top:10px;margin-left:10px;width:123px;"></th>
+                    <th><button class="btn4 button" onclick="openShortenendUrl()">↗</button></th>
                 </tr>
             </tbody>
         </table>

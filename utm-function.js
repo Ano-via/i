@@ -14,6 +14,14 @@ function openLinkInNewTab2() {
         alert('请输入链接');
     }
 }
+function openShortenendUrl() {
+    var link = document.getElementById('shortenedurl').value;
+    if (link.trim() !== '') {
+        window.open(link, '_blank');
+    } else {
+        alert('请输入链接');
+    }
+}
 function showPopup(temp1) {
     document.getElementById("popup").style.display = "block";
     document.getElementById("temp1").value = temp1;
