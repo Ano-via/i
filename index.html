@@ -26,6 +26,18 @@
 			<div class="drop-down clearfix">
 				<ul>
 					<li><a href="/">Lux的1号工具箱</a>
+						<ul>
+							<li>
+								<a href="/utm" target="_blank">
+									<img class="toplogo"
+										src="https://img.icons8.com/ios-glyphs/30/utm-marking.png" />UTM</a>
+							</li>
+							<li>
+								<a href="/water" target="_blank">
+									<img class="toplogo"
+										src="https://img.icons8.com/external-outline-black-m-oki-orlando/32/external-watermark-photography-outline-outline-black-m-oki-orlando.png" />水印</a>
+							</li>
+						</ul>
 					</li>
 
 
@@ -55,7 +67,7 @@
 										src="https://img.icons8.com/ios/50/bank-card-back-side--v1.png" />账户余额</a>
 							</li>
 							<li>
-								<a href="https://www.facebook.com/business/help/support/get-help" target="_blank"><img
+								<a href="https://www.facebook.com/business-support-home/contact-support?source=business_help_center_support" target="_blank"><img
 										class="toplogo"
 										src="https://img.icons8.com/ios/50/technical-support.png" />CC申诉</a>
 								<ul>
@@ -189,15 +201,16 @@
 	</div>
 	<div class="content">
 		<div class="box">
-			<h2>Lux的随机密码生成器</h2>
+			<h2>随机密码生成</h2>
 			<input type="text" placeholder="创建密码" id="password">
 			<table>
 				<tr>
 					<th>
 						<div class="btn1 button" onclick="complex16()">16位复杂</div>
 					</th>
-					<th>
-						<div class="btn2 button" onclick="normal16()">16位中等</div>
+					<th style="display: flex;">
+						<div class="btn5 button3" onclick="getMaleName()"><img height="50%" src="https://img.icons8.com/cotton/64/user-male--v1.png">&nbsp;男名</div>
+						<div class="btn6 button4" onclick="getFemaleName()"><img height="50%" src="https://img.icons8.com/cotton/64/user-female--v6.png">&nbsp;女名</div>
 					</th>
 					<th><a class="btn2 button" onclick="copyPassword()">复制</a></th>
 				</tr>
@@ -237,7 +250,7 @@
 			</table>
 		</div>
 		<div class="box">
-			<h2>Lux的账号处理器</h2>
+			<h2>Meta (Facebook) 账号文本处理</h2>
 			<textarea cols="100" rows="3" placeholder="账号文本" id="pastetext"></textarea>
 			<textarea cols="100" rows="6" placeholder="处理结果" id="dividedtext"></textarea>
 			<input type="text" placeholder="也可以直接粘贴2FA秘钥" id="twofarequest">
