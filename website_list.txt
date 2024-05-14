@@ -1,7 +1,7 @@
 https://www.saranovas.com/collections/clothing
 https://www.bettylay.com/collections/clothing
 https://www.julalova.com/collections/clothing
-https://www.linenstylish.com/collections/chic-new-style
+https://www.linenstylish.com/collections/%F0%9F%86%95%E2%9D%97
 https://www.aproudtee.com/collections/new-in
 https://www.coolstarco.com/collections/new-in
 https://www.shinnyjennifer.com/collections/best-seller
@@ -13,3 +13,5 @@ https://www.rockkskyshop.com/collections/new-arrivals
 https://www.southfaces.com/collections/new-arrivals
 https://fr.southfaces.com/collections/bestseller
 https://de.southfaces.com/collections/bestseller
+https://www.menweary.com/collections/japanese-art
+https://www.novaney.com/collections/new-arrivals
