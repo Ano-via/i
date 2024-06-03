@@ -141,7 +141,7 @@ function tinyurl() {
 }
 
 function reurl() {
-    const apiKey = secrets.REURL;
+    const apiKey = '4070ff49d794e63018503b663c974755ecd6b637939a04df8a38b58d65165567c4f5d6';
     const apiUrl = 'https://api.reurl.cc/shorten';
     const longUrl = document.getElementById("utmresult").value;
     
