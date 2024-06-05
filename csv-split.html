@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV文件分割工具</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.3.0/papaparse.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    #output {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>CSV文件分割工具</h2>
+    <div class="form-group">
+        <label for="fileUpload">选择CSV文件:</label>
+        <input type="file" id="fileUpload">
+    </div>
+    <div class="form-group">
+        <label for="rowsPerFile">每个文件的行数:</label>
+        <input type="number" id="rowsPerFile" value="10">
+    </div>
+    <div class="form-group">
+        <label for="baseFilename">导出文件名称:</label>
+        <input type="text" id="baseFilename" value="output">
+        <span>_n.csv</span>
+    </div>
+    <button class="btn" onclick="startSplitting()">开始分割</button>
+    <div id="output"></div>
+</div>
+
+<script>
+    function startSplitting() {
+        var fileInput = document.getElementById('fileUpload');
+        var rowsPerFile = document.getElementById('rowsPerFile').value;
+        var baseFilename = document.getElementById('baseFilename').value.trim();
+
+        if (!fileInput.files.length) {
+            alert('请选择一个CSV文件');
+            return;
+        }
+
+        var file = fileInput.files[0];
+        Papa.parse(file, {
+            header: true,
+            dynamicTyping: true,
+            chunkSize: 10000, // 设置读取的块大小，可以根据需要调整
+            complete: function(results) {
+                var data = results.data;
+                var totalRows = data.length;
+                var startIndex = 0;
+                var fileIndex = 1;
+
+                while (startIndex < totalRows) {
+                    var endIndex = Math.min(startIndex + rowsPerFile, totalRows);
+                    var chunk = data.slice(startIndex, endIndex);
+
+                    var csvContent = Papa.unparse(chunk);
+                    var blob = new Blob([csvContent], { type: 'text/csv' });
+                    var downloadLink = document.createElement('a');
+                    downloadLink.href = URL.createObjectURL(blob);
+                    downloadLink.download = baseFilename + '_' + fileIndex + '.csv';
+                    downloadLink.textContent = '下载 ' + baseFilename + '_' + fileIndex + '.csv';
+
+                    var outputDiv = document.getElementById('output');
+                    outputDiv.appendChild(downloadLink);
+                    outputDiv.appendChild(document.createElement('br'));
+
+                    startIndex = endIndex;
+                    fileIndex++;
+                }
+
+                alert('CSV文件成功分割为' + (fileIndex - 1) + '个文件');
+            },
+            error: function(error) {
+                console.error('处理文件时发生错误:', error);
+                alert('处理文件时发生错误');
+            }
+        });
+    }
+</script>
+</body>
+</html>
