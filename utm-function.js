@@ -144,7 +144,7 @@ function reurl() {
     const apiKey = '4070ff49d794e63018503b663c974755ecd6b637939a04df8a38b58d65165567c4f5d6';
     const apiUrl = 'https://api.reurl.cc/shorten';
     const longUrl = document.getElementById("utmresult").value;
-    
+
     const headers = {
         'Content-Type': 'application/json',
         'reurl-api-key': apiKey,
@@ -162,39 +162,140 @@ function reurl() {
         headers: headers,
         body: JSON.stringify(requestBody),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.res === "success") {
-            console.log('Shortened URL:', data.short_url);
-            const shortUrl = data.short_url;
-            document.getElementById("shortenedurl").value = shortUrl;
+        .then(response => response.json())
+        .then(data => {
+            if (data.res === "success") {
+                console.log('Shortened URL:', data.short_url);
+                const shortUrl = data.short_url;
+                document.getElementById("shortenedurl").value = shortUrl;
 
-            var copyText = document.getElementById("shortenedurl");
-            copyText.select();
-            copyText.setSelectionRange(0, 999);
-            document.execCommand("copy");
+                var copyText = document.getElementById("shortenedurl");
+                copyText.select();
+                copyText.setSelectionRange(0, 999);
+                document.execCommand("copy");
 
-            document.getElementById("reurl").innerHTML = "√ 已复制";
-            var obj = document.getElementById('reurl');
-            obj.style.backgroundColor = "#daf2c2";
-            obj.style.color = "#397300";
+                document.getElementById("reurl").innerHTML = "√ 已复制";
+                var obj = document.getElementById('reurl');
+                obj.style.backgroundColor = "#daf2c2";
+                obj.style.color = "#397300";
 
-            setTimeout(function () {
-                obj.innerHTML = "备用2";
-                obj.style.backgroundColor = "#f2f2f2";
-                obj.style.color = "#000000";
-            }, 3000);
-        } else {
-            console.error('Error:', data.msg);
+                setTimeout(function () {
+                    obj.innerHTML = "备用2";
+                    obj.style.backgroundColor = "#f2f2f2";
+                    obj.style.color = "#000000";
+                }, 3000);
+            } else {
+                console.error('Error:', data.msg);
+                document.getElementById("reurl").innerHTML = "备用2";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
             document.getElementById("reurl").innerHTML = "备用2";
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById("reurl").innerHTML = "备用2";
-    });
+        });
 }
 
+
+function isgd() {
+    const apiUrl = 'https://is.gd/create.php';
+    const longUrl = encodeURIComponent(document.getElementById("utmresult").value);
+
+    const requestUrl = `${apiUrl}?format=json&url=${longUrl}`;
+
+    document.getElementById("shortenedurl").value = "";
+    document.getElementById("isgd").innerHTML = "生成中";
+
+    fetch(requestUrl, {
+        method: 'GET',
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.shorturl) {
+                console.log('Shortened URL:', data.shorturl);
+                const shortUrl = data.shorturl;
+                document.getElementById("shortenedurl").value = shortUrl;
+
+                var copyText = document.getElementById("shortenedurl");
+                copyText.select();
+                copyText.setSelectionRange(0, 999);
+                document.execCommand("copy");
+
+                document.getElementById("isgd").innerHTML = "√ 已复制";
+                var obj = document.getElementById('isgd');
+                obj.style.backgroundColor = "#daf2c2";
+                obj.style.color = "#397300";
+
+                setTimeout(function () {
+                    obj.innerHTML = "备用3";
+                    obj.style.backgroundColor = "#f2f2f2";
+                    obj.style.color = "#000000";
+                }, 3000);
+            } else {
+                console.error('Error:', data.errormessage);
+                document.getElementById("isgd").innerHTML = "备用3";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("isgd").innerHTML = "备用3";
+        });
+}
+
+function shrtlnk() {
+    const apiKey = 'jd8NAtHZ6RM4k6fZxWSNgIkzmhnfPlBdQa9jV31OiLsCk';
+    const apiUrl = 'https://shrtlnk.dev/api/v2/link';
+    const longUrl = document.getElementById("utmresult").value;
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'api-key': apiKey,
+        'Accept': 'application/json'
+    };
+
+    const requestBody = {
+        "url": longUrl
+    };
+
+    document.getElementById("shortenedurl").value = "";
+    document.getElementById("shrtlnk").innerHTML = "生成中";
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(requestBody),
+    })
+        .then(response => response.json().then(data => ({ status: response.status, body: data })))
+        .then(({ status, body }) => {
+            if (status === 201) {
+                console.log('Shortened URL:', body.shrtlnk);
+                const shortUrl = body.shrtlnk;
+                document.getElementById("shortenedurl").value = shortUrl;
+
+                var copyText = document.getElementById("shortenedurl");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+
+                document.getElementById("shrtlnk").innerHTML = "√ 已复制";
+                var obj = document.getElementById('shrtlnk');
+                obj.style.backgroundColor = "#daf2c2";
+                obj.style.color = "#397300";
+
+                setTimeout(function () {
+                    obj.innerHTML = "备用4";
+                    obj.style.backgroundColor = "#f2f2f2";
+                    obj.style.color = "#000000";
+                }, 3000);
+            } else {
+                console.error('Error:', body.message);
+                document.getElementById("shrtlnk").innerHTML = "备用4";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("shrtlnk").innerHTML = "备用4";
+        });
+}
 
 
 
@@ -240,5 +341,20 @@ function updatetmlresult() {
     document.getElementById('utmresult').value = result;
 
 }
+function removeUrlParameters() {
+    const romove_url = document.getElementById('websiteurl').value;
+    let urlObj = new URL(romove_url);
+    let params = new URLSearchParams(urlObj.search);
 
+    let allowedParams = new URLSearchParams();
+
+    for (let [key, value] of params.entries()) {
+        if (key === 'ids') {
+            allowedParams.append(key, value);
+        }
+    }
+
+    let newUrl = urlObj.origin + urlObj.pathname + '?' + allowedParams.toString();
+    document.getElementById('websiteurl').value = newUrl;
+}
 setInterval("updatetmlresult()", 1000);
