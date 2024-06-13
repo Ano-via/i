@@ -82,14 +82,14 @@ function shortenurl() {
             obj.style.backgroundColor = "#daf2c2";
             obj.style.color = "#397300";
             setTimeout(function () {
-                obj.innerHTML = "生成短链";
+                obj.innerHTML = '<img src="https://d1ayxb9ooonjts.cloudfront.net/0482a3c938673192a591f2845b9eb275.png" height="22">&nbsp;短链&nbsp;';
                 obj.style.backgroundColor = "#f2f2f2";
                 obj.style.color = "#000000";
             }, 3000);
         })
         .catch(error => {
             console.error('生成Bitly短链接时发生错误:', error);
-            document.getElementById("shortenurl").innerHTML = "生成短链";
+            document.getElementById("shortenurl").innerHTML = '<img src="https://d1ayxb9ooonjts.cloudfront.net/0482a3c938673192a591f2845b9eb275.png" height="22">&nbsp;短链&nbsp;';
         });
 }
 function tinyurl() {
@@ -125,18 +125,18 @@ function tinyurl() {
                 obj.style.backgroundColor = "#daf2c2";
                 obj.style.color = "#397300";
                 setTimeout(function () {
-                    obj.innerHTML = "备用1";
+                    obj.innerHTML = '<img src="https://tinyurl.com/images/icons/favicon-32.png" height="22">';
                     obj.style.backgroundColor = "#f2f2f2";
                     obj.style.color = "#000000";
                 }, 3000);
             } else {
                 console.error('生成Tinyurl短链接时发生错误:', data.errors.join(', '));
-                document.getElementById("tinyurl").innerHTML = "备用1";
+                document.getElementById("tinyurl").innerHTML = '<img src="https://tinyurl.com/images/icons/favicon-32.png" height="22">';
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById("tinyurl").innerHTML = "备用1";
+            document.getElementById("tinyurl").innerHTML = '<img src="https://tinyurl.com/images/icons/favicon-32.png" height="22">';
         });
 }
 
@@ -180,18 +180,18 @@ function reurl() {
                 obj.style.color = "#397300";
 
                 setTimeout(function () {
-                    obj.innerHTML = "备用2";
+                    obj.innerHTML = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByklEQVR4AX2RM3gmUQBFb2zbts1mbTdr27ZtM7adlMtmzWZtb72qksl93/9m4hRnfM48QFEUBPj7azhZWCFx0kSgohpB2VkIzM6+SBTyiwwiUBFuj4CHoxOi0lKBsnIE5uamSfkPaZPXo/oKuJByctzF0hpJG9cD5RWjOQohzSV2MvCir8BDogQEBCgu1rbXIpOTgJLSgf55eULaJKUPMmLYPbCYKOQ8OaGL2JxM3rkjDsUlQlhIIOWfvY3goAysJPD3829xs3f4mLJl8zCOQkjPyDcZWNRbYLQMvNUF/Ay4mIXJ27dNkQGV1f3tQraMtHIEiruD452UrVvUEVwMyZFiPwHBBvI/kGtgb2K2iYE0GdjAwGjiRCDpNYCgoCA4mlkgMiEeJkXFo7zz80RgFoVG8rnfgJDd7Ozh5eyC4HNngdKyUcFZWSIwlcIyopBbPQJerm7wdneHnYkpPBwcEbdnF1BRhZCsrFFy8TZIqU5GbhB9LRAcGgp/jiA6NQXRx44KGfwzKKqB7QQyUi8jB7RABIcbdfYsDIqKxbBVWTCme0DyglzWAo6FRbAvKoJnfj6CdKJKpgzsIOgUMRdoAb7oj2fkQLeAtojtiSOToai1IMsAAAAASUVORK5CYII=" height="22">';
                     obj.style.backgroundColor = "#f2f2f2";
                     obj.style.color = "#000000";
                 }, 3000);
             } else {
                 console.error('Error:', data.msg);
-                document.getElementById("reurl").innerHTML = "备用2";
+                document.getElementById("reurl").innerHTML = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByklEQVR4AX2RM3gmUQBFb2zbts1mbTdr27ZtM7adlMtmzWZtb72qksl93/9m4hRnfM48QFEUBPj7azhZWCFx0kSgohpB2VkIzM6+SBTyiwwiUBFuj4CHoxOi0lKBsnIE5uamSfkPaZPXo/oKuJByctzF0hpJG9cD5RWjOQohzSV2MvCir8BDogQEBCgu1rbXIpOTgJLSgf55eULaJKUPMmLYPbCYKOQ8OaGL2JxM3rkjDsUlQlhIIOWfvY3goAysJPD3829xs3f4mLJl8zCOQkjPyDcZWNRbYLQMvNUF/Ay4mIXJ27dNkQGV1f3tQraMtHIEiruD452UrVvUEVwMyZFiPwHBBvI/kGtgb2K2iYE0GdjAwGjiRCDpNYCgoCA4mlkgMiEeJkXFo7zz80RgFoVG8rnfgJDd7Ozh5eyC4HNngdKyUcFZWSIwlcIyopBbPQJerm7wdneHnYkpPBwcEbdnF1BRhZCsrFFy8TZIqU5GbhB9LRAcGgp/jiA6NQXRx44KGfwzKKqB7QQyUi8jB7RABIcbdfYsDIqKxbBVWTCme0DyglzWAo6FRbAvKoJnfj6CdKJKpgzsIOgUMRdoAb7oj2fkQLeAtojtiSOToai1IMsAAAAASUVORK5CYII=" height="22">';
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById("reurl").innerHTML = "备用2";
+            document.getElementById("reurl").innerHTML = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByklEQVR4AX2RM3gmUQBFb2zbts1mbTdr27ZtM7adlMtmzWZtb72qksl93/9m4hRnfM48QFEUBPj7azhZWCFx0kSgohpB2VkIzM6+SBTyiwwiUBFuj4CHoxOi0lKBsnIE5uamSfkPaZPXo/oKuJByctzF0hpJG9cD5RWjOQohzSV2MvCir8BDogQEBCgu1rbXIpOTgJLSgf55eULaJKUPMmLYPbCYKOQ8OaGL2JxM3rkjDsUlQlhIIOWfvY3goAysJPD3829xs3f4mLJl8zCOQkjPyDcZWNRbYLQMvNUF/Ay4mIXJ27dNkQGV1f3tQraMtHIEiruD452UrVvUEVwMyZFiPwHBBvI/kGtgb2K2iYE0GdjAwGjiRCDpNYCgoCA4mlkgMiEeJkXFo7zz80RgFoVG8rnfgJDd7Ozh5eyC4HNngdKyUcFZWSIwlcIyopBbPQJerm7wdneHnYkpPBwcEbdnF1BRhZCsrFFy8TZIqU5GbhB9LRAcGgp/jiA6NQXRx44KGfwzKKqB7QQyUi8jB7RABIcbdfYsDIqKxbBVWTCme0DyglzWAo6FRbAvKoJnfj6CdKJKpgzsIOgUMRdoAb7oj2fkQLeAtojtiSOToai1IMsAAAAASUVORK5CYII=" height="22">';
         });
 }
 
