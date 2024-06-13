@@ -226,18 +226,18 @@ function isgd() {
                 obj.style.color = "#397300";
 
                 setTimeout(function () {
-                    obj.innerHTML = "备用3";
+                    obj.innerHTML = '<img src="https://is.gd/isgd_favicon.ico" height="22">';
                     obj.style.backgroundColor = "#f2f2f2";
                     obj.style.color = "#000000";
                 }, 3000);
             } else {
                 console.error('Error:', data.errormessage);
-                document.getElementById("isgd").innerHTML = "备用3";
+                document.getElementById("isgd").innerHTML = '<img src="https://is.gd/isgd_favicon.ico" height="22">';
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById("isgd").innerHTML = "备用3";
+            document.getElementById("isgd").innerHTML = '<img src="https://is.gd/isgd_favicon.ico" height="22">';
         });
 }
 
@@ -282,19 +282,68 @@ function shrtlnk() {
                 obj.style.color = "#397300";
 
                 setTimeout(function () {
-                    obj.innerHTML = "备用4";
+                    obj.innerHTML = '<img src="https://shrtlnk.dev/favicon-32x32.png" height="22">';
                     obj.style.backgroundColor = "#f2f2f2";
                     obj.style.color = "#000000";
                 }, 3000);
             } else {
                 console.error('Error:', body.message);
-                document.getElementById("shrtlnk").innerHTML = "备用4";
+                document.getElementById("shrtlnk").innerHTML = '<img src="https://shrtlnk.dev/favicon-32x32.png" height="22">';
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById("shrtlnk").innerHTML = "备用4";
+            document.getElementById("shrtlnk").innerHTML = '<img src="https://shrtlnk.dev/favicon-32x32.png" height="22">';
         });
+}
+
+function spoome() {
+    const url = 'https://spoo.me/';
+    const longUrl = document.getElementById("utmresult").value;
+
+    const data = new URLSearchParams();
+    data.append('url', longUrl);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Accept', 'application/json');
+
+    document.getElementById("shortenedurl").value = "";
+    document.getElementById("spoome").innerHTML = "生成中";
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                const response = JSON.parse(xhr.responseText);
+                const shortUrl = response.short_url;
+
+                console.log('Shortened URL:', shortUrl);
+                document.getElementById("shortenedurl").value = shortUrl;
+
+                var copyText = document.getElementById("shortenedurl");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+
+                document.getElementById("spoome").innerHTML = "√ 已复制";
+                var obj = document.getElementById('spoome');
+                obj.style.backgroundColor = "#daf2c2";
+                obj.style.color = "#397300";
+
+                setTimeout(function () {
+                    obj.innerHTML = '<img src="https://spoo.me/static/images/favicon.png" height="22">';
+                    obj.style.backgroundColor = "#f2f2f2";
+                    obj.style.color = "#000000";
+                }, 3000);
+            } else {
+                console.error(`HTTP error! Status: ${xhr.status}`);
+                document.getElementById("spoome").innerHTML = '<img src="https://spoo.me/static/images/favicon.png" height="22">';
+            }
+        }
+    };
+
+    xhr.send(data);
 }
 
 
