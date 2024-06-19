@@ -405,5 +405,6 @@ function removeUrlParameters() {
 
     let newUrl = urlObj.origin + urlObj.pathname + '?' + allowedParams.toString();
     document.getElementById('websiteurl').value = newUrl;
+    copyutmresult();
 }
 setInterval("updatetmlresult()", 1000);
