@@ -405,6 +405,11 @@ function removeUrlParameters() {
 
     let newUrl = urlObj.origin + urlObj.pathname + '?' + allowedParams.toString();
     document.getElementById('websiteurl').value = newUrl;
-    copyutmresult();
+    try {
+        await navigator.clipboard.writeText(newUrl);
+        console.log('Text copied to clipboard: ' + textToCopy);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+    }
 }
 setInterval("updatetmlresult()", 1000);
