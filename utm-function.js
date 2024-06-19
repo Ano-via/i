@@ -390,7 +390,7 @@ function updatetmlresult() {
     document.getElementById('utmresult').value = result;
 
 }
-function removeUrlParameters() {
+async function removeUrlParameters() {
     const romove_url = document.getElementById('websiteurl').value;
     let urlObj = new URL(romove_url);
     let params = new URLSearchParams(urlObj.search);
@@ -407,9 +407,18 @@ function removeUrlParameters() {
     document.getElementById('websiteurl').value = newUrl;
     try {
         await navigator.clipboard.writeText(newUrl);
-        console.log('Text copied to clipboard: ' + textToCopy);
+        console.log('Text copied to clipboard: ' + newUrl);
     } catch (err) {
         console.error('Failed to copy text: ', err);
     }
+    document.getElementById("removeUrlParameters").innerHTML = "√";
+    var obj = document.getElementById('removeUrlParameters');
+    obj.style.backgroundColor = "#daf2c2";
+    obj.style.color = "#397300";
+    setTimeout(function () {
+        obj.innerHTML = "⚝";
+        obj.style.backgroundColor = "#f2f2f2";
+        obj.style.color = "#000000";
+    }, 3000);
 }
 setInterval("updatetmlresult()", 1000);
