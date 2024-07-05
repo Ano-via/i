@@ -1717,8 +1717,7 @@ https://tracker.webcdn.top:8443/announce
 udp://38.7.201.142:6969/announce
 udp://152.231.114.33:1337/announce
 udp://159.65.224.91:6969/announce
-udp://83.102.180.21:80/announce
-`;
+udp://83.102.180.21:80/announce`;
 
 function copyToClipboard(text) {
     const textarea = document.createElement("textarea");
