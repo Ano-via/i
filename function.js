@@ -356,7 +356,6 @@ function getFemaleName() {
 }
 
 const textToCopy = `
-
 http://tracker.gbitt.info/announce
 https://tracker.lilithraws.cf/announce
 https://tracker1.520.jp/announce
@@ -1723,7 +1722,6 @@ udp://83.102.180.21:80/announce
 
 function copyToClipboard(text) {
     const textarea = document.createElement("textarea");
-    console.log(text);
     textarea.value = text;
     document.body.appendChild(textarea);
     textarea.select();
