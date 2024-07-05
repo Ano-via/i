@@ -1721,13 +1721,17 @@ udp://159.65.224.91:6969/announce
 udp://83.102.180.21:80/announce
 `;
 
-function copyTrackers(text) {
+function copyToClipboard(text) {
     const textarea = document.createElement("textarea");
     textarea.value = text;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
-    document.body.removeChild(textarea);
+    document.body.removeChild(textarea);    
+  }
+
+function copyTrackers(){
+    copyToClipboard(textToCopy);
     var obj = document.getElementById('copytrackers');
     obj.innerHTML = "√ 已复制";
     obj.style.backgroundColor = "#daf2c2";
@@ -1737,5 +1741,5 @@ function copyTrackers(text) {
         obj.style.backgroundColor = "#f2f2f2";
         obj.style.color = "#000000";
     }, 3000);
-  }
+}
 setInterval("refresh()", 1000);
