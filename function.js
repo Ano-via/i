@@ -1723,6 +1723,7 @@ udp://83.102.180.21:80/announce
 
 function copyToClipboard(text) {
     const textarea = document.createElement("textarea");
+    console.log(text);
     textarea.value = text;
     document.body.appendChild(textarea);
     textarea.select();
