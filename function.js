@@ -202,7 +202,9 @@ function delparentheses() {
     var linksstr = document.getElementById("linksstr").value;
     var result = linksstr.replace(/ *\([^)]*\)/g, "");
     result = result.replace(/\n/g, ",");
-    result = result.replace(/,,/g, ",");
+    while (result.includes(',,')) {
+        result = result.replace(/,,/g, ",");
+    }
     document.getElementById("linksstr").value = result;
     var copyText = document.getElementById("linksstr");
     copyText.select();
