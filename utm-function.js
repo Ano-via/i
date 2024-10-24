@@ -242,18 +242,18 @@ function isgd() {
 }
 
 function shrtlnk() {
-    const apiKey = 'jd8NAtHZ6RM4k6fZxWSNgIkzmhnfPlBdQa9jV31OiLsCk';
-    const apiUrl = 'https://shrtlnk.dev/api/v2/link';
+    const apiKey = '041a38efac6447b29663fe9e59ac4e70'; // 替换为您的 Rebrandly API 密钥
+    const apiUrl = 'https://api.rebrandly.com/v1/links';
     const longUrl = document.getElementById("utmresult").value;
 
     const headers = {
         'Content-Type': 'application/json',
-        'api-key': apiKey,
-        'Accept': 'application/json'
+        'apikey': apiKey
     };
 
     const requestBody = {
-        "url": longUrl
+        destination: longUrl,
+        domain: { fullName: "rebrand.ly" } // 可选：指定域名
     };
 
     document.getElementById("shortenedurl").value = "";
@@ -266,9 +266,9 @@ function shrtlnk() {
     })
         .then(response => response.json().then(data => ({ status: response.status, body: data })))
         .then(({ status, body }) => {
-            if (status === 201) {
-                console.log('Shortened URL:', body.shrtlnk);
-                const shortUrl = body.shrtlnk;
+            if (status === 200) {
+                console.log('Shortened URL:', body.shortUrl);
+                const shortUrl = body.shortUrl;
                 document.getElementById("shortenedurl").value = shortUrl;
 
                 var copyText = document.getElementById("shortenedurl");
@@ -282,20 +282,21 @@ function shrtlnk() {
                 obj.style.color = "#397300";
 
                 setTimeout(function () {
-                    obj.innerHTML = '<img src="https://shrtlnk.dev/favicon-32x32.png" height="22">';
+                    obj.innerHTML = '<img src="https://app.rebrandly.com/favicon.ico" height="22">'; // 更新图标链接
                     obj.style.backgroundColor = "#f2f2f2";
                     obj.style.color = "#000000";
                 }, 3000);
             } else {
                 console.error('Error:', body.message);
-                document.getElementById("shrtlnk").innerHTML = '<img src="https://shrtlnk.dev/favicon-32x32.png" height="22">';
+                document.getElementById("shrtlnk").innerHTML = '<img src="https://app.rebrandly.com/favicon.ico" height="22">'; // 更新图标链接
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById("shrtlnk").innerHTML = '<img src="https://shrtlnk.dev/favicon-32x32.png" height="22">';
+            document.getElementById("shrtlnk").innerHTML = '<img src="https://app.rebrandly.com/favicon.ico" height="22">'; // 更新图标链接
         });
 }
+
 
 function spoome() {
     const url = 'https://spoo.me/';
