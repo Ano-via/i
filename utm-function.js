@@ -257,7 +257,7 @@ function shrtlnk() {
 
     const requestBody = {
         destination: longUrl,
-        domain: { fullName: "rebrand.ly" } // 可选：指定域名
+        domain: { fullName: "rebrand.ly" } 
     };
 
     document.getElementById("shortenedurl").value = "";
