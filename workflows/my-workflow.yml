@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # 选择你想要触发的分支，比如 main
+  workflow_dispatch:
 
 jobs:
   deploy:

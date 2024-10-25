@@ -2,6 +2,8 @@ const bitlyApiKey = process.env.BITLY;
 const reurlApiKey = process.env.REURL;
 const tinyurlApiKey = process.env.TINYURL;
 const rebrandlyApiKey = process.env.REBRANDLY;
+console.log("BITLY API Key: ", bitlyApiKey);
+console.log("REURL API Key: ", reurlApiKey);
 function openLinkInNewTab() {
     var link = document.getElementById('websiteurl').value;
     if (link.trim() !== '') {
