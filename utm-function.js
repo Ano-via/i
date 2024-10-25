@@ -267,8 +267,8 @@ function shrtlnk() {
         .then(response => response.json().then(data => ({ status: response.status, body: data })))
         .then(({ status, body }) => {
             if (status === 200) {
-                console.log('Shortened URL:', body.shortUrl);
-                const shortUrl = body.shortUrl;
+                console.log('Shortened URL:', "https://" + body.shortUrl);
+                const shortUrl = "https://" + body.shortUrl;
                 document.getElementById("shortenedurl").value = shortUrl;
 
                 var copyText = document.getElementById("shortenedurl");
