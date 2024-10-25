@@ -1,9 +1,3 @@
-const bitlyApiKey = process.env.BITLY;
-const reurlApiKey = process.env.REURL;
-const tinyurlApiKey = process.env.TINYURL;
-const rebrandlyApiKey = process.env.REBRANDLY;
-console.log("BITLY API Key: ", bitlyApiKey);
-console.log("REURL API Key: ", reurlApiKey);
 function openLinkInNewTab() {
     var link = document.getElementById('websiteurl').value;
     if (link.trim() !== '') {
@@ -59,7 +53,7 @@ function copyutmresult() {
     }, 3000);
 }
 function shortenurl() {
-    const accessToken = bitlyApiKey;
+    const accessToken = '13ff8fc9c4983636f414ad6ca51b7acf6cb2d857';
     const longUrl = document.getElementById("utmresult").value;
     const apiUrl = 'https://api-ssl.bitly.com/v4/shorten';
     document.getElementById("shortenurl").innerHTML = "生成中";
@@ -99,7 +93,7 @@ function shortenurl() {
         });
 }
 function tinyurl() {
-    const apiToken = reurlApiKey;
+    const apiToken = 'PC7gbIfGAUctHLmuVcJYfqzMuUthyotURHhvxpz8QnZ5t9UTkrZcK48TC2Ru';
     const apiUrl = 'https://api.tinyurl.com/create';
     const longUrl = document.getElementById("utmresult").value;
     const headers = {
@@ -147,7 +141,7 @@ function tinyurl() {
 }
 
 function reurl() {
-    const apiKey = reurlApiKey;
+    const apiKey = '4070ff49d794e63018503b663c974755ecd6b637939a04df8a38b58d65165567c4f5d6';
     const apiUrl = 'https://api.reurl.cc/shorten';
     const longUrl = document.getElementById("utmresult").value;
 
@@ -248,7 +242,7 @@ function isgd() {
 }
 
 function shrtlnk() {
-    const apiKey = rebrandlyApiKey;
+    const apiKey = '041a38efac6447b29663fe9e59ac4e70'; // 替换为您的 Rebrandly API 密钥
     const apiUrl = 'https://api.rebrandly.com/v1/links';
     const longUrl = document.getElementById("utmresult").value;
 
@@ -259,7 +253,7 @@ function shrtlnk() {
 
     const requestBody = {
         destination: longUrl,
-        domain: { fullName: "rebrand.ly" } 
+        domain: { fullName: "rebrand.ly" } // 可选：指定域名
     };
 
     document.getElementById("shortenedurl").value = "";
