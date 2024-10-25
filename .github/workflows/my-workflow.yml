@@ -30,7 +30,8 @@ jobs:
             "start": "node utm-function.js"
           },
           "dependencies": {
-            "your-dependency": "^1.0.0"
+            "axios": "^0.21.1",
+            "express": "^4.17.1"
           }
         }' > package.json
 
