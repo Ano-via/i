@@ -1,0 +1,31 @@
+name: Deploy UTM Function
+
+on:
+  push:
+    branches:
+      - main  # 选择你想要触发的分支，比如 main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'  # 选择合适的 Node.js 版本
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run UTM Function Script
+      run: |
+        node utm-function.js
+      env:
+        BITLY: ${{ secrets.BITLY }}
+        REURL: ${{ secrets.REURL }}
+        TINYURL: ${{ secrets.TINYURL }}
+        REBRANDLY: ${{ secrets.REBRANDLY }}
