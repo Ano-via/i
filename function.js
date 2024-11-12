@@ -1,3 +1,6 @@
+const mySecret = process.env.MY_SECRET;
+console.log("My Secret:", mySecret);
+
 var twofarequest = document.getElementById("twofarequest");
 function HOTP(K, C) {
     var key = sjcl.codec.base32.toBits(K);
