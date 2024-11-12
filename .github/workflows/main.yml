@@ -13,4 +13,4 @@ jobs:
       - name: Run JavaScript file
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: node my_script.js
+        run: node function.js
