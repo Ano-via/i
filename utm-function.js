@@ -1,5 +1,3 @@
-console.log("My Secret:", mySecret);
-
 function openLinkInNewTab() {
     var link = document.getElementById('websiteurl').value;
     if (link.trim() !== '') {
