@@ -425,27 +425,19 @@ function iso2CountryNames(){
     var inputText = document.getElementById("linksstr").value;
     var outputText = inputText.replace(/\b[A-Z]{2}\b/g, (isoCode) => iso2ToCountry[isoCode] || isoCode);
     document.getElementById("linksstr").value = outputText;
-}
-
-function copyToClipboard(text) {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
+    var copyText = document.getElementById("linksstr");
+    copyText.select();
+    copyText.setSelectionRange(0, 999);
     document.execCommand("copy");
-    document.body.removeChild(textarea);    
-  }
-
-function copyTrackers(){
-    copyToClipboard(textToCopy);
-    var obj = document.getElementById('copytrackers');
-    obj.innerHTML = "√ 已复制";
+    document.getElementById("iso2countrynames").innerHTML = "√ 已复制";
+    var obj = document.getElementById('iso2countrynames');
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
     setTimeout(function () {
-        obj.innerHTML = '复制Trackers';
+        obj.innerHTML = "ISO2 → 国家名";
         obj.style.backgroundColor = "#f2f2f2";
         obj.style.color = "#000000";
     }, 3000);
 }
+
 setInterval("refresh()", 1000);
