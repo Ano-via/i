@@ -1806,13 +1806,14 @@ udp://83.102.180.21:80/announce`;
 
 function copyTrackers() {
     copyTextToClipboard(trackers);
-    document.getElementById("copytrackers").innerHTML = "√ 已复制";
+    // document.getElementById("copytrackers").innerHTML = "√ 已复制";
     var obj = document.getElementById('copytrackers');
+    obj.innerHTML = "√ 已复制";
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
     setTimeout(function () {
         obj.innerHTML = "复制 trackers";
-        obj.style.backgroundColor = "#f2f2f2";
+        obj.style.backgroundColor = "#ffffff";
         obj.style.color = "#000000";
     }, 3000);
 }
