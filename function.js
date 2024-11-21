@@ -1804,4 +1804,16 @@ udp://152.231.114.33:1337/announce
 udp://159.65.224.91:6969/announce
 udp://83.102.180.21:80/announce`
 
+function copyTrackers(){
+    copyTextToClipboard(trackers);
+    document.getElementById("copytrackers").innerHTML = "√ 已复制";
+    var obj = document.getElementById('copytrackers');
+    obj.style.backgroundColor = "#daf2c2";
+    obj.style.color = "#397300";
+    setTimeout(function () {
+        obj.innerHTML = "ISO2 → 国家名";
+        obj.style.backgroundColor = "#f2f2f2";
+        obj.style.color = "#000000";
+    }, 3000);
+}
 setInterval("refresh()", 1000);
