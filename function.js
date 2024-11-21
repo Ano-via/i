@@ -1811,7 +1811,7 @@ function copyTrackers(){
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
     setTimeout(function () {
-        obj.innerHTML = "ISO2 → 国家名";
+        obj.innerHTML = "复制 trackers";
         obj.style.backgroundColor = "#f2f2f2";
         obj.style.color = "#000000";
     }, 3000);
