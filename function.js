@@ -429,8 +429,9 @@ function iso2CountryNames(){
     copyText.select();
     copyText.setSelectionRange(0, 999);
     document.execCommand("copy");
-    document.getElementById("iso2countrynames").innerHTML = "√ 已复制";
+    // document.getElementById("iso2countrynames").innerHTML = "√ 已复制";
     var obj = document.getElementById('iso2countrynames');
+    obj.innerHTML = "√ 已复制";
     obj.style.backgroundColor = "#daf2c2";
     obj.style.color = "#397300";
     setTimeout(function () {
