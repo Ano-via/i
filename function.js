@@ -1804,7 +1804,7 @@ udp://152.231.114.33:1337/announce
 udp://159.65.224.91:6969/announce
 udp://83.102.180.21:80/announce`
 
-function copyTrackers(){
+function copyTrackers() {
     copyTextToClipboard(trackers);
     document.getElementById("copytrackers").innerHTML = "√ 已复制";
     var obj = document.getElementById('copytrackers');
