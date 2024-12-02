@@ -1821,10 +1821,11 @@ function copyTrackers() {
 
 function processNumbers() {
     // 获取输入内容
-    var input = document.getElementById('linksstr').value;
-    input = input.replace(/\n{2,}/g, '\n');
-    // 按行分割并转为数字数组
-    let numbers = input.split(/\s+/).map(num => parseInt(num, 10)).sort((a, b) => a - b);
+    const input = document.getElementById('inputNumbers').value.trim();
+    const lines = input.split(/\s+/).filter(line => /^\d+$/.test(line)); // 只保留数字
+
+    // 转为数字数组并排序
+    let numbers = lines.map(num => parseInt(num, 10)).sort((a, b) => a - b);
 
     // 处理数字范围
     let result = [];
