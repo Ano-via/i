@@ -1819,4 +1819,39 @@ function copyTrackers() {
     }, 3000);
 }
 
+function processNumbers() {
+    // 获取输入内容
+    const input = document.getElementById('linksstr').value;
+    // 按行分割并转为数字数组
+    let numbers = input.split(/\s+/).map(num => parseInt(num, 10)).sort((a, b) => a - b);
+
+    // 处理数字范围
+    let result = [];
+    let start = numbers[0];
+    let prev = numbers[0];
+
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] === prev + 1) {
+            prev = numbers[i];
+        } else {
+            if (start === prev) {
+                result.push(start.toString().padStart(5, '0'));
+            } else {
+                result.push(`${start.toString().padStart(5, '0')}-${prev.toString().padStart(5, '0')}`);
+            }
+            start = numbers[i];
+            prev = numbers[i];
+        }
+    }
+
+    // 添加最后一个范围
+    if (start === prev) {
+        result.push(start.toString().padStart(5, '0'));
+    } else {
+        result.push(`${start.toString().padStart(5, '0')}-${prev.toString().padStart(5, '0')}`);
+    }
+
+    // 输出结果
+    document.getElementById('linksstr').value = result.join(', ');
+}
 setInterval("refresh()", 1000);
