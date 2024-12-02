@@ -1821,7 +1821,8 @@ function copyTrackers() {
 
 function processNumbers() {
     // 获取输入内容
-    const input = document.getElementById('linksstr').value;
+    var input = document.getElementById('linksstr').value;
+    input = input.replace(/\n{2,}/g, '\n');
     // 按行分割并转为数字数组
     let numbers = input.split(/\s+/).map(num => parseInt(num, 10)).sort((a, b) => a - b);
 
@@ -1853,5 +1854,18 @@ function processNumbers() {
 
     // 输出结果
     document.getElementById('linksstr').value = result.join(', ');
+    var copyText = document.getElementById("linksstr");
+    copyText.select();
+    copyText.setSelectionRange(0, 999);
+    document.execCommand("copy");
+    var obj = document.getElementById('groupNumbers');
+    obj.innerHTML = "√ 已复制";
+    obj.style.backgroundColor = "#daf2c2";
+    obj.style.color = "#397300";
+    setTimeout(function () {
+        obj.innerHTML = "数字分组";
+        obj.style.backgroundColor = "#f2f2f2";
+        obj.style.color = "#000000";
+    }, 3000);
 }
 setInterval("refresh()", 1000);
