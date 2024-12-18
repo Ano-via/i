@@ -332,7 +332,7 @@ function metaCheck() {
     window.open('https://account.live.com/proofs/manage/additional', '_blank');
     window.open('https://accountscenter.facebook.com/password_and_security/login_activity', '_blank');
     window.open('https://accountscenter.facebook.com/password_and_security/login_alerts', '_blank');
-    window.open('https://business.facebook.com/business-support-home/?landing_page=account_overview', '_blank');
+    window.open('https://l.facebook.com/l.php?u=https%3A%2F%2Fbusiness.facebook.com%2Faccountquality%2F%3Flanding_page%3Dinsights', '_blank');
     window.open('https://business.facebook.com/settings/info', '_blank');
 }
 function getMaleName() {
