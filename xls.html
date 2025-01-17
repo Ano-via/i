@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>粘贴Excel数据，将自动在最前面插入图片列</title>
+    <title>拖拽上传并选择Excel表格</title>
     <link rel="icon" href="favicon.png" sizes="16x16" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <style>
@@ -28,27 +28,70 @@
             max-width: 100px;
             max-height: 100px;
         }
+        #dropzone {
+            width: 100%;
+            height: 150px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            line-height: 150px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+        #dropzone.over {
+            background-color: #e0f7fa;
+        }
     </style>
 </head>
 <body>
-    <h1>粘贴Excel数据，将自动在最前面插入图片列</h1>
+    <h1>拖拽上传并选择Excel表格</h1>
+    
+    <div id="dropzone">将Excel文件拖到这里上传</div>
     <textarea id="excelInput" placeholder="在此粘贴Excel数据" style="width:100%; height:150px;"></textarea>
     <button id="processData">生成表格</button>
     <button id="copyData">复制选中内容</button>
     <div id="tableContainer"></div>
 
     <script>
-        document.getElementById('processData').addEventListener('click', function () {
-            const input = document.getElementById('excelInput').value.trim();
+        // 拖拽上传文件功能
+        const dropzone = document.getElementById('dropzone');
+        dropzone.addEventListener('dragover', function(event) {
+            event.preventDefault();
+            dropzone.classList.add('over');
+        });
 
-            if (!input) {
-                alert('请粘贴Excel数据！');
-                return;
+        dropzone.addEventListener('dragleave', function() {
+            dropzone.classList.remove('over');
+        });
+
+        dropzone.addEventListener('drop', function(event) {
+            event.preventDefault();
+            dropzone.classList.remove('over');
+            const file = event.dataTransfer.files[0];
+
+            if (file && file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+                readExcelFile(file);
+            } else {
+                alert('请上传Excel文件！');
             }
+        });
 
-            // 将Excel TSV或CSV数据解析为数组
-            const rows = input.split('\n').map(row => row.split('\t'));
+        // 解析Excel文件并生成表格
+        function readExcelFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = e.target.result;
+                const workbook = XLSX.read(data, { type: 'binary' });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                processExcelData(rows);
+            };
+            reader.readAsBinaryString(file);
+        }
 
+        // 处理Excel数据并插入表格
+        function processExcelData(rows) {
             if (rows.length === 0) {
                 alert('数据无效！');
                 return;
@@ -68,8 +111,9 @@
 
             // 渲染表格
             renderTable(updatedRows);
-        });
+        }
 
+        // 渲染表格函数
         function renderTable(data) {
             const container = document.getElementById('tableContainer');
             container.innerHTML = ''; // 清空之前的内容
@@ -91,11 +135,13 @@
             container.appendChild(table);
         }
 
+        // 切换单元格选中状态
         function toggleSelect(event) {
             const cell = event.target;
             cell.classList.toggle('selected'); // 切换选中状态
         }
 
+        // 复制选中内容到剪贴板
         document.getElementById('copyData').addEventListener('click', function () {
             const selectedCells = Array.from(document.querySelectorAll('td.selected'));
             if (selectedCells.length === 0) {
