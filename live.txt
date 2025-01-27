@@ -2,7 +2,6 @@
 广东卫视,http://183.255.10.76:6610/200000001898/460000089800010055/1.m3u8?IASHttpSessionId=ACE
 广东卫视,http://183.255.10.92:6610/200000001898/460000089800010221/1.m3u8?IASHttpSessionId=ACE
 广东卫视咪咕,http://z.b.bkpcp.top/m.php?id=gdws
-广东卫视_ITV,http://2000.run:35455/itv/1000000005000265034.m3u8?cdn=ystenlive
 广东卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226961/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E2MGyx659D_aaDPP0qt3NgA%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 广东卫视,http://[2409:8087:1a0a:df::404b]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226248/index.m3u8
 广东卫视,http://[2409:8087:5e00:24::1e]:6060/200000001898/460000089800010221/1.m3u8
@@ -37,9 +36,6 @@
 广东珠江,http://yzfvip.top:8000/udp/239.77.0.114:5146$广东汕头
 广东珠江,http://l2tp.yeedah.xyz:8000/udp/239.77.0.114:5146$广东汕头
 广东珠江,http://ct.whosayssowhat.top:4022/udp/239.77.0.114:5146$广东汕头
-广东卫视高清,https://58.252.12.164:8000/udp/239.77.0.166:5146
-广东珠江高清,https://58.252.12.164:8000/udp/239.77.0.1:5146
-广东珠江超清,https://58.252.12.164:8000/udp/239.77.0.114:5146
 大湾区卫视,http://183.255.10.86:6610/200000001898/460000089800010108/1.m3u8?IASHttpSessionId=ACE
 大湾区卫视,http://[2409:8087:5e00:24::1e]:6060/000000001000/1000000002000011619/index.m3u8
 大湾区卫视,http://222.128.55.152:9080/live/dwq.m3u8
@@ -52,3 +48,6 @@
 大湾区卫视,http://yzfvip.top:8000/udp/239.77.0.215:5146$广东汕头
 大湾区卫视,http://l2tp.yeedah.xyz:8000/udp/239.77.0.215:5146$广东汕头
 大湾区卫视,http://ct.whosayssowhat.top:4022/udp/239.77.0.215:5146$广东汕头
+翡翠台,http://222.128.55.152:9080/live/gdfc.m3u8
+无线翡翠频道,http://cdn9.1689.us.kg/smt1.1.php?id=jade_twn
+广东|无线翡翠,rtp://239.12.21.61:10001$广东电信酒店
