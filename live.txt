@@ -60,7 +60,6 @@
 广东新闻,rtp://239.12.21.4:10001$广东电信酒店1060
 广东新闻,http://119.123.79.35:9600/hls/20/index.m3u8$广东电信酒店1061
 广东新闻,http://180.142.85.7:8181/tsfile/live/1014_1.m3u8?key=txiptv&playlive=1&authid=0$未知酒店1062
-广东新闻,http://180.142.85.7:8181/tsfile/live/1014_1.m3u8?key=txiptv&playlive=1&authid=0$未知酒店1063
 广东新闻,http://27.46.125.212:808/udp/239.2.2.21:10001$未知酒店1064
 广东新闻,http://27.46.125.212:808/hls/21/index.m3u8$未知酒店1065
 广东新闻,http://219.137.203.182:9999/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0$未知酒店1066
