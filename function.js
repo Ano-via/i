@@ -1821,7 +1821,7 @@ function copyTrackers() {
 
 function processNumbers() {
     // 获取输入内容
-    const input = document.getElementById('inputNumbers').value.trim();
+    const input = document.getElementById('linksstr').value.trim();
     const lines = input.split(/\s+/).filter(line => /^\d+$/.test(line)); // 只保留数字
 
     // 转为数字数组并排序
