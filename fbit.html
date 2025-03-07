@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机四位数字字母方框</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+        }
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .box.copied {
+            background-color: #e4f0d5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="grid"></div>
+    
+    <script>
+        function generateRandomCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            return Array.from({length: 4}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+        }
+        
+        function createBoxes() {
+            const container = document.getElementById('grid');
+            for (let i = 0; i < 32; i++) {
+                const div = document.createElement('div');
+                div.className = 'box';
+                div.textContent = generateRandomCode();
+                div.onclick = function() {
+                    navigator.clipboard.writeText(this.textContent).then(() => {
+                        this.classList.add('copied');
+                    });
+                };
+                container.appendChild(div);
+            }
+        }
+        
+        createBoxes();
+    </script>
+</body>
+</html>
