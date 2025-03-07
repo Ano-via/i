@@ -65,7 +65,7 @@ function normal8() {
     var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var passwordLength = 8;
     var password = "";
-    for (var i = 0; i <= passwordLength; i++) {
+    for (var i = 0; i < passwordLength; i++) {
         var randomNumber = Math.floor(Math.random() * chars.length);
         password += chars.substring(randomNumber, randomNumber + 1);
     }
@@ -75,7 +75,7 @@ function complex16() {
     var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var passwordLength = 16;
     var password = "";
-    for (var i = 0; i <= passwordLength; i++) {
+    for (var i = 0; i < passwordLength; i++) {
         var randomNumber = Math.floor(Math.random() * chars.length);
         password += chars.substring(randomNumber, randomNumber + 1);
     }
@@ -85,7 +85,7 @@ function normal16() {
     var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var passwordLength = 16;
     var password = "";
-    for (var i = 0; i <= passwordLength; i++) {
+    for (var i = 0; i < passwordLength; i++) {
         var randomNumber = Math.floor(Math.random() * chars.length);
         password += chars.substring(randomNumber, randomNumber + 1);
     }
