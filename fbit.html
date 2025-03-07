@@ -7,11 +7,12 @@
     <style>
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 10px;
             max-width: 1280px;
             margin: auto;
             padding: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            justify-content: center;
         }
         .box {
             display: flex;
@@ -41,9 +42,20 @@
             return Array.from({length: 4}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
         }
         
+        function calculateBoxCount() {
+            const containerWidth = Math.min(window.innerWidth, 1280);
+            const containerHeight = window.innerHeight - 40; // 40px padding adjustment
+            const boxSize = 90; // 80px box + 10px gap
+            const columns = Math.floor(containerWidth / boxSize) - 1;
+            const rows = Math.floor(containerHeight / boxSize);
+            return columns * rows;
+        }
+        
         function createBoxes() {
             const container = document.getElementById('grid');
-            for (let i = 0; i < 32; i++) {
+            container.innerHTML = '';
+            const boxCount = calculateBoxCount();
+            for (let i = 0; i < boxCount; i++) {
                 const div = document.createElement('div');
                 div.className = 'box';
                 div.textContent = generateRandomCode();
@@ -56,7 +68,8 @@
             }
         }
         
-        createBoxes();
+        window.addEventListener('resize', createBoxes);
+        window.addEventListener('load', createBoxes);
     </script>
 </body>
 </html>
