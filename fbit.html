@@ -43,10 +43,10 @@
         }
         
         function calculateBoxCount() {
-            const containerWidth = Math.min(window.innerWidth, 1280);
+            const containerWidth = Math.min(window.innerWidth, 1280) - 40;
             const containerHeight = window.innerHeight - 40; // 40px padding adjustment
             const boxSize = 90; // 80px box + 10px gap
-            const columns = Math.floor(containerWidth / boxSize) - 1;
+            const columns = Math.floor(containerWidth / boxSize);
             const rows = Math.floor(containerHeight / boxSize);
             return columns * rows;
         }
