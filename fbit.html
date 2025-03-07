@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>随机四位数字字母方框</title>
+    <title>随机代码方框</title>
     <style>
         .container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 10px;
-            max-width: 400px;
+            max-width: 1280px;
             margin: auto;
             padding: 20px;
         }
@@ -27,7 +27,8 @@
             transition: background-color 0.3s;
         }
         .box.copied {
-            background-color: #daf2c2;
+            background-color: #4caf50;
+            color: white;
         }
     </style>
 </head>
