@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>网址 IDS 多选排序工具 + 右键置顶 + 读取xlsx</title>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/plugins/Sortable.multiDrag.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    li {
+      padding: 6px 12px;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      cursor: move;
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 14px;
+      border-radius: 4px;
+      user-select: none;
+    }
+    li.selected {
+      background-color: #d0eaff;
+      border-color: #007bff;
+    }
+    #finalUrl {
+      margin-top: 15px;
+      word-break: break-all;
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #copyBtn.success {
+      background-color: #daf2c2;
+      color: white;
+    }
+    #dropZone {
+      border: 2px dashed #bbb;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      margin: 15px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    #dropZone.hover {
+      border-color: #007bff;
+      color: #007bff;
+      background-color: #e6f0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>网址 IDS 多选排序工具 + 右键置顶 + 读取xlsx</h2>
+
+  <input type="text" id="urlInput" placeholder="输入如：https://example.com?ids=1,2,3,4" />
+  
+  <!-- 文件导入 -->
+  <div id="dropZone">拖拽 XLSX 文件到这里，或点击选择文件</div>
+  <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none" />
+  
+  <ul id="idList"></ul>
+  
+  <button id="copyBtn" onclick="copyFinalUrl()">复制最终链接</button>
+
+  <div><strong>最终链接：</strong></div>
+  <div id="finalUrl"></div>
+
+
+
+  <script>
+    const urlInput = document.getElementById('urlInput');
+    const idList = document.getElementById('idList');
+    const finalUrl = document.getElementById('finalUrl');
+    const copyBtn = document.getElementById('copyBtn');
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+
+    urlInput.addEventListener('input', updateList);
+
+    function updateList() {
+      idList.innerHTML = '';
+      const url = urlInput.value;
+      const match = url.match(/ids=([^&]*)/);
+      if (!match) {
+        finalUrl.textContent = '';
+        return;
+      }
+
+      const ids = match[1].split(',').map(id => id.trim()).filter(id => id !== '');
+      ids.forEach((id, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${id}`;
+        li.setAttribute('data-id', id);
+        idList.appendChild(li);
+      });
+      updateFinalUrl();
+    }
+
+    new Sortable(idList, {
+      animation: 150,
+      multiDrag: true,
+      selectedClass: 'selected',
+      onEnd: updateFinalUrl
+    });
+
+    function updateFinalUrl() {
+      const baseUrl = urlInput.value.split(/ids=[^&]*/)[0];
+      const ids = [...idList.children].map(li => li.getAttribute('data-id'));
+      const final = baseUrl + 'ids=' + ids.join(',');
+      finalUrl.textContent = final;
+
+      [...idList.children].forEach((li, idx) => {
+        const id = li.getAttribute('data-id');
+        li.textContent = `${idx + 1}. ${id}`;
+      });
+    }
+
+    function copyFinalUrl() {
+      const text = finalUrl.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.classList.add('success');
+        copyBtn.textContent = "√ 链接已复制";
+        setTimeout(() => {
+          copyBtn.classList.remove('success');
+          copyBtn.textContent = "复制最终链接";
+        }, 3000);
+      });
+    }
+
+    // 批量移到顶部功能（右键）
+    idList.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      const li = e.target.closest('li');
+      if (!li || !li.classList.contains('selected')) return;
+
+      const selectedItems = [...idList.querySelectorAll('li.selected')];
+      selectedItems.forEach(item => idList.removeChild(item));
+      selectedItems.reverse().forEach(item => idList.insertBefore(item, idList.firstChild));
+
+      updateFinalUrl();
+    });
+
+    // 拖拽与点击打开文件
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('hover');
+    });
+
+    dropZone.addEventListener('dragleave', e => {
+      e.preventDefault();
+      dropZone.classList.remove('hover');
+    });
+
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('hover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFile(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', e => {
+      if (fileInput.files.length > 0) {
+        handleFile(fileInput.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      if (!file.name.match(/\.(xlsx|xls)$/)) {
+        alert('请上传 Excel 文件（.xlsx 或 .xls）');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const data = evt.target.result;
+        const workbook = XLSX.read(data, {type: 'array'});
+
+        // 默认读第一个sheet
+        const firstSheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[firstSheetName];
+
+        // 转换为json，header:1 返回二维数组
+        const rows = XLSX.utils.sheet_to_json(sheet, {header:1});
+
+        // 跳过前两行，从第三行开始遍历
+        // 找 B 列不为空的，取对应行的 A 列
+        const result = [];
+        for(let i=2; i<rows.length; i++) {
+          const row = rows[i];
+          if (!row) continue;
+          const B = row[1]; // B列，数组从0开始
+          const A = row[0];
+          if (B !== undefined && B !== null && String(B).trim() !== '') {
+            if (A !== undefined && A !== null && String(A).trim() !== '') {
+              result.push(String(A).trim());
+            }
+          }
+        }
+
+        if (result.length === 0) {
+          alert('未找到符合条件的数据');
+          return;
+        }
+
+        // 替换 input 中 ids 后面内容
+        replaceIds(result);
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function replaceIds(newIds) {
+      let url = urlInput.value;
+
+      if (!url.includes('ids=')) {
+        // 如果没有ids=，就加到末尾
+        if (url.includes('?')) {
+          url += '&ids=' + newIds.join(',');
+        } else {
+          url += '?ids=' + newIds.join(',');
+        }
+      } else {
+        // 替换ids=后面内容直到 & 或结束
+        url = url.replace(/ids=[^&]*/, 'ids=' + newIds.join(','));
+      }
+
+      urlInput.value = url;
+      updateList();
+    }
+
+    // 初始化演示，方便测试
+  </script>
+
+</body>
+</html>
