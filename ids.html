@@ -109,8 +109,8 @@
         finalUrl.textContent = '';
         return;
       }
-
-      const ids = match[1].split(',').map(id => id.trim()).filter(id => id !== '');
+      const raw = decodeURIComponent(match[1]);  // 解码 %2C
+      const ids = raw.split(',').map(id => id.trim()).filter(id => id !== '');
       ids.forEach((id, index) => {
         const li = document.createElement('li');
         li.textContent = `${index + 1}. ${id}`;
