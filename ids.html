@@ -53,6 +53,7 @@
     }
     #copyBtn.success {
       background-color: #daf2c2;
+      color: white;
     }
     #dropZone {
       border: 2px dashed #bbb;
@@ -82,11 +83,10 @@
   <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none" />
   
   <ul id="idList"></ul>
-  
-  <button id="copyBtn" onclick="copyFinalUrl()">复制最终链接</button>
+  <div><strong id="finalUrlTitle">最终链接：</strong></div>
+<div id="finalUrl" title="点击复制链接，右键跳转预览"></div>
 
-  <div><strong>最终链接：</strong></div>
-  <div id="finalUrl"></div>
+
 
 
 
@@ -108,8 +108,8 @@
         finalUrl.textContent = '';
         return;
       }
-      const raw = decodeURIComponent(match[1]);  // 解码 %2C
-      const ids = raw.split(',').map(id => id.trim()).filter(id => id !== '');
+const raw = decodeURIComponent(match[1]);  // 解码 %2C
+const ids = raw.split(',').map(id => id.trim()).filter(id => id !== '');
       ids.forEach((id, index) => {
         const li = document.createElement('li');
         li.textContent = `${index + 1}. ${id}`;
@@ -249,12 +249,32 @@
         // 替换ids=后面内容直到 & 或结束
         url = url.replace(/ids=[^&]*/, 'ids=' + newIds.join(','));
       }
-
       urlInput.value = url;
       updateList();
     }
 
-    // 初始化演示，方便测试
+    finalUrl.addEventListener('click', () => {
+  const text = finalUrl.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    finalUrl.style.backgroundColor = '#28a745';
+    finalUrl.style.color = '#fff';
+    setTimeout(() => {
+      updateFinalUrl(); // 恢复显示链接
+      finalUrl.style.backgroundColor = '';
+      finalUrl.style.color = '';
+    }, 3000);
+  });
+});
+
+finalUrl.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  const url = finalUrl.textContent;
+  if (url && url.startsWith('http')) {
+    window.open(url, '_blank');
+  }
+});
+
+    
   </script>
 
 </body>
