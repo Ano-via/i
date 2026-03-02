@@ -1,0 +1,31 @@
+name: Telegram Message Sender
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 每天 UTC 08:00 运行一次，可修改
+  workflow_dispatch:     # 允许手动触发
+
+jobs:
+  send_telegram_message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install telethon
+
+      - name: Send Telegram Messages
+        env:
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+        run: |
+          python send_telegram.py
