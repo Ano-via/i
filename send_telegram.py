@@ -6,7 +6,7 @@ api_id = int(os.environ.get("API_ID"))
 api_hash = os.environ.get("API_HASH")
 
 contacts_and_messages = [
-    ("@QingBaoJuXuanwubot", "/sign")
+    ("@QingBaoJuBWbot", "/sign")
 ]
 
 async def send_messages():
