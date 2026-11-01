@@ -45,7 +45,7 @@ jobs:
           pip install -r huangli-calc-requirements.txt
 
       - name: Generate yi.calc and ji.calc
-        run: python main.py
+        run: python huangli-calc.py
 
       - name: Commit generated files
         run: |
